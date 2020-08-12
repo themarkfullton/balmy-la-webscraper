@@ -3,10 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "engines": {
+    "node": "12.18.1",
+    "npm": "6.14.5"
   },
-  "author": "",
+  "scripts": {
+    "start": "node server.js",
+    "watch": "nodemon server.js"
+  },
+  "author": "Mark Fullton",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.19.2",
