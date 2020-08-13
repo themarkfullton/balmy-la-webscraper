@@ -5,23 +5,51 @@
   height: 100vh;
 
   .navWrapper {
-    width: 5vw;
-    height: 100%;
-    background-color: red;
+    position: fixed;
+    z-index: 3;
+    width: 100%;
+    height: 20vh;
+    text-align: center;
+    padding-top: 0.25vh;
+
+    .navButton {
+      color: rgba(255, 255, 255, 0.5);
+      @include transition-time;
+
+      &:hover {
+        color: rgba(255, 255, 255, 1);
+        transform: scale(1.5) perspective(1px);
+        @include transition-time;
+      }
+    }
+
+    .actualNav {
+      position: fixed;
+      z-index: 5;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: red;
+    }
   }
 
   .heroWrapper {
+    position: fixed;
     width: 100%;
     height: 100%;
-    background-color: blue;
+    background: url("../img/background.jpg");
+    background-size: cover;
+    background-position: center;
 
     .contentWrapper {
-      display: inline-block;
+      position: fixed;
       width: 70%;
       height: 100%;
-      float: right;
+      top: 0;
+      right: 0;
       overflow: auto;
-      background-color: rgba(255, 255, 255, 0.8);
+      background-color: rgba(255, 255, 255, 0.3);
     }
   }
 }

@@ -4,23 +4,54 @@
 }
 
 .pageWrapper .navWrapper {
-  width: 5vw;
-  height: 100%;
+  position: fixed;
+  z-index: 3;
+  width: 100%;
+  height: 20vh;
+  text-align: center;
+  padding-top: 0.25vh;
+}
+
+.pageWrapper .navWrapper .navButton {
+  color: rgba(255, 255, 255, 0.5);
+  -webkit-transition-duration: 1s;
+          transition-duration: 1s;
+}
+
+.pageWrapper .navWrapper .navButton:hover {
+  color: white;
+  -webkit-transform: scale(1.5) perspective(1px);
+          transform: scale(1.5) perspective(1px);
+  -webkit-transition-duration: 1s;
+          transition-duration: 1s;
+}
+
+.pageWrapper .navWrapper .actualNav {
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   background-color: red;
 }
 
 .pageWrapper .heroWrapper {
+  position: fixed;
   width: 100%;
   height: 100%;
-  background-color: blue;
+  background: url("../img/background.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 .pageWrapper .heroWrapper .contentWrapper {
-  display: inline-block;
+  position: fixed;
   width: 70%;
   height: 100%;
-  float: right;
+  top: 0;
+  right: 0;
   overflow: auto;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.3);
 }
 /*# sourceMappingURL=style.css.map */
