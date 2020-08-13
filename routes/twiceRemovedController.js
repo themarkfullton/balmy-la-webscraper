@@ -2,10 +2,12 @@ let axios = require("axios");
 let cheerio = require("cheerio");
 let mongoose = require("mongoose");
 let db = require("../models");
+require("dotenv").config();
 
 mongoose.Promise = Promise;
 mongoose.connect(process.env.TWICE_REMOVED_DB, {
-  useMongoClient: true,
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 });
 
 let mongooseConnection = mongoose.connection;

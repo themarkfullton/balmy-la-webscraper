@@ -1,0 +1,26 @@
+.pageWrapper {
+  width: 100vw;
+  height: 100vh;
+}
+
+.pageWrapper .navWrapper {
+  width: 5vw;
+  height: 100%;
+  background-color: red;
+}
+
+.pageWrapper .heroWrapper {
+  width: 100%;
+  height: 100%;
+  background-color: blue;
+}
+
+.pageWrapper .heroWrapper .contentWrapper {
+  display: inline-block;
+  width: 70%;
+  height: 100%;
+  float: right;
+  overflow: auto;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+/*# sourceMappingURL=style.css.map */
