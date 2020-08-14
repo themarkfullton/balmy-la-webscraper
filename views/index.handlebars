@@ -1,0 +1,13 @@
+<div class="articleWrapper">
+    <p>Drawing from index</p>
+    {{#each articlesToSend}}
+    <div class="articleContainer">
+        <div class="articleImageDiv">
+            <img class="articleImage" src="{{this.articlesToSend.imageURL}}">
+        </div>
+        <div class="articleTitle">
+            <p>{{this.articlesToSend.headline}}</p>
+        </div>
+    </div>
+    {{/each}}
+</div>

@@ -67,6 +67,4 @@ module.exports = (app) => {
       });
     });
   });
-
-  app.get("/api/search", (req, res) => {});
 };
