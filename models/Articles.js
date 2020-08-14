@@ -8,7 +8,7 @@ let ArticleSchema = new Schema({
     required: true,
   },
 
-  summary: {
+  category: {
     type: String,
     required: true,
   },
@@ -18,7 +18,7 @@ let ArticleSchema = new Schema({
     required: true,
   },
 
-  imageURL: {
+  imageUrl: {
     type: String,
     required: true,
   },

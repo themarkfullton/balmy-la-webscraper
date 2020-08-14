@@ -1,17 +1,16 @@
 <div class="articleWrapper">
     <h1>Today's Articles:</h1>
-    {{#each articles}}
+    {{#each weather}}
     <div class="articleContainer">
         <div class="articleImageDiv">
-            <a href="{{this.url}}" target="_blank"></a><img class="articleImage" src="{{this.imageURL}}"></a>
+            <img class="articleImage" src="{{this.weather}}">
         </div>
         <div class="articleTitle">
-            <a href="{{this.url}}" target="_blank">
-                <p>{{this.headline}}</p>
-            </a>
+            <p>{{this.dayName}} | {{this.dayNumber}}</p>
         </div>
         <div class="articleDescription">
-            <p>{{this.description}}</p>
+            <p>{{this.temp}}</p>
+            <p>{{this.weatherDesc}}</p>
         </div>
     </div>
     {{/each}}

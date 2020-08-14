@@ -27,27 +27,30 @@ mongooseConnection.once("open", function () {
 
 module.exports = (app) => {
   app.get("/", (req, res) => {
-    var testItem = [
-      {
-        headline: "Test Headline",
-        url:
-          "https://www.wired.com/story/want-free-coding-lessons-twitch-real-time/",
-        imageURL:
-          "https://i.pinimg.com/originals/6e/5f/0d/6e5f0db3986c094e3b4c22d12b01e764.jpg",
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer diam dui, elementum eu auctor id, pharetra rutrum justo. Aliquam dapibus tincidunt vulputate. Nullam a mi mollis, pharetra nisi dignissim, elementum mi. Integer ullamcorper metus et neque porta, at iaculis nisi aliquam.",
-      },
-      {
-        headline: "Second Test",
-        url:
-          "https://www.wired.com/story/python-language-more-popular-than-ever/",
-        imageURL:
-          "https://r1.ilikewallpaper.net/iphone-wallpapers/download/99644/kratos-as-cyberpunk-iphone-wallpaper-ilikewallpaper_com_200.jpg",
-        description:
-          "https://www.wired.com/story/python-language-more-popular-than-ever/",
-      },
-    ];
+    axios
+      .get(
+        "https://www.accuweather.com/en/us/los-angeles/90012/daily-weather-forecast/347625"
+      )
+      .then((response) => {
+        let $ = cheerio.load(response.data);
 
-    res.render("index", { articles: testItem });
+        var weatherToSend = {
+          data: [],
+        };
+
+        $(".daily-wrapper").each((i, element) => {
+          weatherToSend.data.push({
+            dayName: $(element).find(".dow").text(),
+            dayNumber: $(element).find(".sub").text(),
+            temp: $(element).find(".high").text(),
+            weather:
+              "https://www.accuweather.com/" +
+              $(element).find("img.weather-icon").attr("data-src"),
+            weatherDesc: $(element).find("div.phrase").text(),
+          });
+        });
+
+        res.render("index", { weather: weatherToSend.data });
+      });
   });
 };
