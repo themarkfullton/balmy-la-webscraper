@@ -21,4 +21,4 @@ app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
 });
 
-var routes = require("./routes/twiceRemovedController")(app);
+var routes = require("./routes/balmyLAController")(app);
