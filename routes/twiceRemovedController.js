@@ -55,6 +55,7 @@ module.exports = (app) => {
           .attr("src");
       });
 
+      console.log(headline);
       articlesToSend.data.push({
         headline: headline,
         summary: summary,
@@ -63,7 +64,7 @@ module.exports = (app) => {
       });
 
       res.render("index", {
-        articlesToSend: articlesToSend.map((articles) => articles.toJSON()),
+        articles: articlesToSend.map((articles) => articles.toJSON()),
       });
     });
   });
