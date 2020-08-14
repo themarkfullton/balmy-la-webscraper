@@ -25,9 +25,7 @@ mongooseConnection.once("open", function () {
 // ==============================================
 
 module.exports = (app) => {
-  app.get("/", (req, res) => res.render("index"));
-
-  app.get("/api/search", (req, res) => {
+  app.get("/", (req, res) => {
     axios.get("https://www.advocate.com/transgender").then((response) => {
       var $ = cheerio.load(response.data);
 
@@ -63,6 +61,12 @@ module.exports = (app) => {
         url: url,
         imageURL,
       });
+
+      res.render("index", {
+        articlesToSend: articlesToSend.map((articles) => articles.toJSON()),
+      });
     });
   });
+
+  app.get("/api/search", (req, res) => {});
 };
