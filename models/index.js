@@ -1,4 +1,4 @@
 module.exports = {
-  Aritcle: require("./Articles.js"),
-  Remark: require("./Remarks.js"),
+  Weather: require("./Weathers.js"),
+  Complaint: require("./Complaints.js"),
 };

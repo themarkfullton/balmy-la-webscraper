@@ -2,35 +2,40 @@ let mongoose = require("mongoose");
 
 let Schema = mongoose.Schema;
 
-let ArticleSchema = new Schema({
-  headline: {
+let weatherSchema = new Schema({
+  dayName: {
     type: String,
     required: true,
   },
 
-  category: {
+  dayNumber: {
     type: String,
     required: true,
   },
 
-  url: {
+  temp: {
     type: String,
     required: true,
   },
 
-  imageUrl: {
+  weather: {
     type: String,
     required: true,
   },
 
-  remark: [
+  weatherDesc: {
+    type: String,
+    required: true,
+  },
+
+  complaint: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Remark",
+      ref: "Complaint",
     },
   ],
 });
 
-let Article = mongoose.model("Article", ArticleSchema);
+let Weather = mongoose.model("Weather", weatherSchema);
 
-module.exports = Article;
+module.exports = Weather;

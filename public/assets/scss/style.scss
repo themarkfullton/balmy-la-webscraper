@@ -1,4 +1,4 @@
-@import "variables", "articles";
+@import "variables", "weather";
 
 .pageWrapper {
   width: 100vw;
@@ -80,7 +80,7 @@
 
     .contentWrapper {
       position: fixed;
-      width: 70%;
+      width: 60%;
       height: 100%;
       top: 0;
       right: 0;

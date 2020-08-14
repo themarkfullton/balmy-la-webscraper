@@ -1,14 +1,14 @@
-<div class="articleWrapper">
-    <h1>Today's Articles:</h1>
+<div class="weatherWrapper">
+    <h1>UPCOMING WEATHER:</h1>
     {{#each weather}}
-    <div class="articleContainer">
-        <div class="articleImageDiv">
-            <img class="articleImage" src="{{this.weather}}">
+    <div class="weatherContainer">
+        <div class="weatherImageDiv">
+            <img class="weatherImage" src="{{this.weather}}">
         </div>
-        <div class="articleTitle">
+        <div class="weatherTitle">
             <p>{{this.dayName}} | {{this.dayNumber}}</p>
         </div>
-        <div class="articleDescription">
+        <div class="weatherDescription">
             <p>{{this.temp}}</p>
             <p>{{this.weatherDesc}}</p>
         </div>

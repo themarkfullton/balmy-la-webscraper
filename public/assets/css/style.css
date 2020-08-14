@@ -1,28 +1,29 @@
-.articleWrapper {
+.weatherWrapper {
   width: 90%;
 }
 
-.articleWrapper .articleContainer {
+.weatherWrapper .weatherContainer {
   width: 95%;
   margin: 2.5%;
   padding: 3vw;
 }
 
-.articleWrapper .articleContainer .articleImageDiv {
+.weatherWrapper .weatherContainer .weatherImageDiv {
   width: 100%;
-  height: 30vw;
+  height: 20vw;
   overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.3);
   border-radius: 30px 30px 0 0;
 }
 
-.articleWrapper .articleContainer .articleImageDiv .articleImage {
+.weatherWrapper .weatherContainer .weatherImageDiv .weatherImage {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
 }
 
-.articleWrapper .articleContainer .articleTitle {
+.weatherWrapper .weatherContainer .weatherTitle {
   width: 100%;
   padding-top: 1vh;
   padding-bottom: 1vh;
@@ -32,7 +33,7 @@
   background-color: rgba(255, 255, 255, 0.5);
 }
 
-.articleWrapper .articleContainer .articleDescription {
+.weatherWrapper .weatherContainer .weatherDescription {
   padding: 1.5vh 2vh 4vh 2vh;
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 0 0 30px 30px;
@@ -127,7 +128,7 @@
 
 .pageWrapper .heroWrapper .contentWrapper {
   position: fixed;
-  width: 70%;
+  width: 60%;
   height: 100%;
   top: 0;
   right: 0;
