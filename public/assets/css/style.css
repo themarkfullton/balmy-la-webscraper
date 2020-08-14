@@ -52,13 +52,17 @@
   padding-top: 0.25vh;
 }
 
-.pageWrapper .navWrapper .navButton {
+.pageWrapper .navWrapper .navbuttonWrapper {
+  display: block;
+}
+
+.pageWrapper .navWrapper .navbuttonWrapper .navButton {
   color: rgba(255, 255, 255, 0.5);
   -webkit-transition-duration: 1s;
           transition-duration: 1s;
 }
 
-.pageWrapper .navWrapper .navButton:hover {
+.pageWrapper .navWrapper .navbuttonWrapper .navButton:hover {
   color: white;
   -webkit-transform: scale(1.5) perspective(1px);
           transform: scale(1.5) perspective(1px);
@@ -75,6 +79,41 @@
   width: 100vw;
   height: 100vh;
   background-color: rgba(255, 255, 255, 0.7);
+}
+
+.pageWrapper .navWrapper .actualNav .actualNavContent {
+  padding-top: 25vh;
+  font-size: 2rem;
+  font-weight: bolder;
+  letter-spacing: 0.5rem;
+}
+
+.pageWrapper .navWrapper .actualNav .actualNavContent .navLink {
+  margin-bottom: 5vh;
+}
+
+.pageWrapper .navWrapper .actualNav .actualNavContent .navLink a {
+  text-decoration: none;
+  color: black;
+}
+
+.pageWrapper .navWrapper .actualNav .actualNavContent .navLinkhover {
+  color: white;
+}
+
+.pageWrapper .navWrapper .actualNav .actualNavContent .navButtonBack {
+  color: rgba(0, 0, 0, 0.5);
+  bottom: 10vh;
+  -webkit-transition-duration: 1s;
+          transition-duration: 1s;
+}
+
+.pageWrapper .navWrapper .actualNav .actualNavContent .navButtonBack:hover {
+  color: black;
+  -webkit-transform: scale(1.5) perspective(1px);
+          transform: scale(1.5) perspective(1px);
+  -webkit-transition-duration: 1s;
+          transition-duration: 1s;
 }
 
 .pageWrapper .heroWrapper {

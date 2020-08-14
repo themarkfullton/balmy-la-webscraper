@@ -12,14 +12,18 @@
     text-align: center;
     padding-top: 0.25vh;
 
-    .navButton {
-      color: rgba(255, 255, 255, 0.5);
-      @include transition-time;
+    .navbuttonWrapper {
+      display: block;
 
-      &:hover {
-        color: rgba(255, 255, 255, 1);
-        transform: scale(1.5) perspective(1px);
+      .navButton {
+        color: rgba(255, 255, 255, 0.5);
         @include transition-time;
+
+        &:hover {
+          color: rgba(255, 255, 255, 1);
+          transform: scale(1.5) perspective(1px);
+          @include transition-time;
+        }
       }
     }
 
@@ -32,6 +36,37 @@
       width: 100vw;
       height: 100vh;
       background-color: rgba(255, 255, 255, 0.7);
+
+      .actualNavContent {
+        padding-top: 25vh;
+        font-size: 2rem;
+        font-weight: bolder;
+        letter-spacing: 0.5rem;
+
+        .navLink {
+          margin-bottom: 5vh;
+
+          a {
+            text-decoration: none;
+            color: black;
+          }
+          &hover {
+            color: white;
+          }
+        }
+
+        .navButtonBack {
+          color: rgba(0, 0, 0, 0.5);
+          bottom: 10vh;
+          @include transition-time;
+
+          &:hover {
+            color: rgba(0, 0, 0, 1);
+            transform: scale(1.5) perspective(1px);
+            @include transition-time;
+          }
+        }
+      }
     }
   }
 

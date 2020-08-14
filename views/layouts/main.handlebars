@@ -14,13 +14,22 @@
 <body>
     <div class="pageWrapper">
         <div class="navWrapper">
-            <button class="navButton" onclick="myFunction()"><i class="fas fa-chevron-circle-down fa-2x"></i></button>
-            <div class="actualNav">
-                <p>Actual stuff goes here</p>
+            <div class="navbuttonWrapper" id="navbuttonWrapper">
+                <button class="navButton" onclick="toggleNavbar()"><i
+                        class="fas fa-chevron-circle-down fa-2x"></i></button>
+            </div>
+            <div class="actualNav" id="toggleNav">
+                <div class="actualNavContent">
+                    <p class="navLink"><a href="#">Log In / Log Out</a></p>
+                    <p class="navLink"><a href="#">See All Commented Articles</a></p>
+                    <p class="navLink"><a href="#">See Saved Articles</a></p>
+                    <p class="navLink"><a href="#">See GitHub Repo</a></p>
+                    <button class="navButtonBack" onclick="toggleNavbar()"><i
+                            class="fas fa-chevron-circle-up fa-2x"></i></button>
+                </div>
             </div>
         </div>
         <div class="heroWrapper">
-            <p>Image here</p>
             <div class="contentWrapper">
                 {{{ body }}}
             </div>
@@ -28,6 +37,7 @@
 
     </div>
     <script src="https://kit.fontawesome.com/6d2ea823d0.js"></script>
+    <script src="assets/js/controller.js"></script>
 </body>
 
 </html>
