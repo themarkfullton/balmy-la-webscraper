@@ -4,10 +4,15 @@
     <p>Found article</p>
     <div class="articleContainer">
         <div class="articleImageDiv">
-            <img class="articleImage" src="{{this.imageURL}}">
+            <a href="{{this.url}}" target="_blank"></a><img class="articleImage" src="{{this.imageURL}}"></a>
         </div>
         <div class="articleTitle">
-            <p>{{this.headline}}</p>
+            <a href="{{this.url}}" target="_blank">
+                <p>{{this.headline}}</p>
+            </a>
+        </div>
+        <div class="articleDescription">
+            <p>{{this.description}}</p>
         </div>
     </div>
     {{/each}}
