@@ -35,24 +35,33 @@ module.exports = (app) => {
         data: [],
       };
 
+      var headline, summary, url, imageURL;
+
       $("article").each((i, element) => {
-        var headline = $(element)
+        headline = $(element)
           .children(".panel-body")
           .children(".title")
           .contents();
 
-        var summary = $(element)
+        summary = $(element)
           .children(".panel-body")
           .children(".teaser")
           .children("p")
           .contents();
 
-        var url = $(element).children(".panel-image").children("a").attr("src");
+        url = $(element).children(".panel-image").children("a").attr("src");
 
-        var imageURL = $(element)
+        imageURL = $(element)
           .children(".panel-image")
           .children("img")
           .attr("src");
+      });
+
+      articlesToSend.data.push({
+        headline: headline,
+        summary: summary,
+        url: url,
+        imageURL,
       });
     });
   });
