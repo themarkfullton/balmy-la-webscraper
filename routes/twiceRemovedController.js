@@ -26,46 +26,12 @@ mongooseConnection.once("open", function () {
 
 module.exports = (app) => {
   app.get("/", (req, res) => {
-    axios.get("https://www.advocate.com/transgender").then((response) => {
-      var $ = cheerio.load(response.data);
+    var testItem = {
+      headline: "Test Headline",
+      img:
+        "https://i.pinimg.com/originals/6e/5f/0d/6e5f0db3986c094e3b4c22d12b01e764.jpg",
+    };
 
-      var articlesToSend = {
-        data: [],
-      };
-
-      var headline, summary, url, imageURL;
-
-      $("article").each((i, element) => {
-        headline = $(element)
-          .children(".panel-body")
-          .children(".title")
-          .contents();
-
-        summary = $(element)
-          .children(".panel-body")
-          .children(".teaser")
-          .children("p")
-          .contents();
-
-        url = $(element).children(".panel-image").children("a").attr("src");
-
-        imageURL = $(element)
-          .children(".panel-image")
-          .children("img")
-          .attr("src");
-      });
-
-      console.log(headline);
-      articlesToSend.data.push({
-        headline: headline,
-        summary: summary,
-        url: url,
-        imageURL,
-      });
-
-      res.render("index", {
-        articles: articlesToSend.map((articles) => articles.toJSON()),
-      });
-    });
+    res.render("index", { articles: testItem.toJSON() });
   });
 };
