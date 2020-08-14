@@ -5,6 +5,7 @@ let db = require("../models");
 require("dotenv").config();
 
 mongoose.Promise = Promise;
+
 mongoose.connect(process.env.TWICE_REMOVED_DB, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -26,12 +27,19 @@ mongooseConnection.once("open", function () {
 
 module.exports = (app) => {
   app.get("/", (req, res) => {
-    var testItem = {
-      headline: "Test Headline",
-      img:
-        "https://i.pinimg.com/originals/6e/5f/0d/6e5f0db3986c094e3b4c22d12b01e764.jpg",
-    };
+    var testItem = [
+      {
+        headline: "Test Headline",
+        imageURL:
+          "https://i.pinimg.com/originals/6e/5f/0d/6e5f0db3986c094e3b4c22d12b01e764.jpg",
+      },
+      {
+        headline: "Second Test",
+        imageURL:
+          "https://r1.ilikewallpaper.net/iphone-wallpapers/download/99644/kratos-as-cyberpunk-iphone-wallpaper-ilikewallpaper_com_200.jpg",
+      },
+    ];
 
-    res.render("index", { articles: testItem.toJSON() });
+    res.render("index", { articles: testItem });
   });
 };
