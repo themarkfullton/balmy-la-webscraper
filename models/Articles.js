@@ -23,10 +23,6 @@ let ArticleSchema = new Schema({
     required: true,
   },
 
-  slug: {
-    type: String,
-  },
-
   remark: [
     {
       type: Schema.Types.ObjectId,
