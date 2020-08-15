@@ -3,6 +3,7 @@ const cheerio = require("cheerio");
 const mongoose = require("mongoose");
 const db = require("../models");
 const argon2 = require("argon2");
+const session = require("express-session");
 require("dotenv").config();
 
 mongoose.Promise = Promise;
@@ -35,6 +36,8 @@ module.exports = (app) => {
       .then((response) => {
         let $ = cheerio.load(response.data);
 
+        console.log(req.session);
+
         var weatherToSend = {
           data: [],
         };
@@ -51,7 +54,10 @@ module.exports = (app) => {
           });
         });
 
-        res.render("index", { weather: weatherToSend.data });
+        res.render("index", {
+          weather: weatherToSend.data,
+          user: req.session.userId,
+        });
       });
   });
 
@@ -80,8 +86,35 @@ module.exports = (app) => {
           username: username,
           password: hashword,
         })
-          .then((resp) => res.redirect("/"))
+          .then((resp) => {
+            req.session.userId = username;
+            res.redirect("/");
+          })
           .catch((err) => res.json(err));
+      }
+    });
+  });
+
+  app.post("/login", async (req, res) => {
+    const { username, password } = req.body;
+
+    await db.User.findOne(
+      { username: username },
+      "username password",
+      (err, resp) => {
+        if (err) return handleError(err);
+      }
+    ).then(async (resp) => {
+      console.log(resp);
+      var searchSet = resp.password;
+
+      const valid = await argon2.verify(searchSet, password);
+
+      if (valid) {
+        req.session.userId = searchSet.username;
+        res.redirect("/");
+      } else {
+        res.redirect("/register");
       }
     });
   });
