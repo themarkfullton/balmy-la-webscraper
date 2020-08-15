@@ -157,6 +157,65 @@
   color: rgba(0, 0, 0, 0.6);
 }
 
+.authenticateWrapper {
+  width: 90%;
+}
+
+.authenticateWrapper .authenticateContent {
+  margin: 2.5%;
+  margin-top: 30vh;
+  padding: 6vw 3vw;
+  width: 95%;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 30px;
+  text-align: center;
+}
+
+.authenticateWrapper .authenticateContent h1 {
+  font-family: "Sigmar One", cursive;
+  margin-bottom: 0.7em;
+}
+
+.authenticateWrapper .authenticateContent h1 {
+  font-size: 20px;
+}
+
+@media screen and (min-width: 320px) {
+  .authenticateWrapper .authenticateContent h1 {
+    font-size: calc( 20px + strip-unit(10px) * ((100vw - 320px) / strip-unit(880px)));
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .authenticateWrapper .authenticateContent h1 {
+    font-size: 30px;
+  }
+}
+
+.authenticateWrapper .authenticateContent input {
+  width: 90%;
+  margin: 2vh 0;
+  display: block;
+  border: none;
+  padding: 2vh 2vw;
+  font-family: "Sen", sans-serif;
+  font-weight: bold;
+  border-radius: 30px;
+  background-color: #ff6103;
+  color: white;
+}
+
+.authenticateWrapper .authenticateContent input:hover {
+  background-color: white;
+  color: #ff6103;
+}
+
+.authenticateWrapper .authenticateContent #username,
+.authenticateWrapper .authenticateContent #password {
+  background-color: rgba(255, 255, 255, 0.6);
+  color: black;
+}
+
 body {
   font-family: "Sen", sans-serif;
 }
@@ -224,12 +283,12 @@ body {
 }
 
 .pageWrapper .navWrapper .navContent h1 {
-  font-size: 27px;
+  font-size: 23px;
 }
 
 @media screen and (min-width: 320px) {
   .pageWrapper .navWrapper .navContent h1 {
-    font-size: calc( 27px + strip-unit(23px) * ((100vw - 320px) / strip-unit(880px)));
+    font-size: calc( 23px + strip-unit(27px) * ((100vw - 320px) / strip-unit(880px)));
   }
 }
 
@@ -246,12 +305,12 @@ body {
 }
 
 .pageWrapper .navWrapper .navContent p {
-  font-size: 20px;
+  font-size: 16px;
 }
 
 @media screen and (min-width: 320px) {
   .pageWrapper .navWrapper .navContent p {
-    font-size: calc( 20px + strip-unit(20px) * ((100vw - 320px) / strip-unit(880px)));
+    font-size: calc( 16px + strip-unit(24px) * ((100vw - 320px) / strip-unit(880px)));
   }
 }
 

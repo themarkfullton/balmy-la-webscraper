@@ -1,4 +1,4 @@
-@import "variables", "weather";
+@import "variables", "weather", "authenticate";
 
 body {
   font-family: $body-font-fam;
@@ -40,7 +40,7 @@ body {
 
       h1 {
         font-family: $header-font-fam;
-        @include fluid-type(320px, 1200px, 27px, 50px);
+        @include fluid-type(320px, 1200px, 23px, 50px);
         line-height: 1.2em;
         margin-bottom: 5vh;
         border-bottom: 2px rgba(255, 255, 255, 0.7) double;
@@ -50,7 +50,7 @@ body {
         font-family: $body-font-fam;
         font-weight: bolder;
         line-height: 1.2em;
-        @include fluid-type(320px, 1200px, 20px, 40px);
+        @include fluid-type(320px, 1200px, 16px, 40px);
       }
     }
 

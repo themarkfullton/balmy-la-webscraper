@@ -53,4 +53,12 @@ module.exports = (app) => {
         res.render("index", { weather: weatherToSend.data });
       });
   });
+
+  app.get("/login", (req, res) => {
+    res.render("login");
+  });
+
+  app.get("/register", (req, res) => {
+    res.render("register");
+  });
 };
