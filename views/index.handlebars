@@ -1,5 +1,8 @@
 <div class="weatherWrapper">
-    <h1>UPCOMING WEATHER:</h1>
+    <div class="weatherIntro">
+        <h2>Weather to Compain About</h2>
+        <p>Pulled from <a href="https://www.accuweather.com/">Accuweather</a></p>
+    </div>
     {{#each weather}}
     <div class="weatherContainer">
         <div class="weatherImageDiv">
@@ -11,6 +14,13 @@
         <div class="weatherDescription">
             <p>{{this.temp}}</p>
             <p>{{this.weatherDesc}}</p>
+        </div>
+        <div class="weatherComment">
+            {{#if user }}
+            <i class="fas fa-comment"></i>
+            {{else}}
+            <p>Please log in to add a comment</p>
+            {{/if}}
         </div>
     </div>
     {{/each}}

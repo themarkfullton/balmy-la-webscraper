@@ -1,6 +1,38 @@
 .weatherWrapper {
   width: 90%;
 
+  .weatherIntro {
+    width: 95%;
+    margin: 2.5%;
+    padding: 3vw;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 30px;
+    text-align: center;
+
+    h2 {
+      font-family: $header-font-fam;
+      @include fluid-type(320px, 1200px, 20px, 30px);
+      margin-bottom: 0.7em;
+    }
+
+    p {
+      opacity: 0.7;
+      font-style: italic;
+
+      a {
+        opacity: 1;
+        font-weight: bold;
+        text-decoration: none;
+        color: black;
+        @include transition-time;
+
+        &:hover {
+          color: white;
+        }
+      }
+    }
+  }
+
   .weatherContainer {
     width: 95%;
     margin: 2.5%;
@@ -28,6 +60,7 @@
       font-family: $header-font-fam;
       letter-spacing: 0.25rem;
       background-color: rgba(255, 255, 255, 0.6);
+      @include fluid-type(320px, 1200px, 16px, 30px);
     }
 
     .weatherDescription {
@@ -35,7 +68,24 @@
       justify-content: space-between;
       padding: 1.5vh 2vh 4vh 2vh;
       background-color: rgba(255, 255, 255, 0.6);
+      @include fluid-type(320px, 1200px, 16px, 30px);
+
+      p {
+        margin: 1vw;
+      }
+    }
+
+    .weatherComment {
+      text-align: center;
+      padding: 1.5vh 2vh 4vh 2vh;
+      background-color: rgba(255, 255, 255, 0.6);
       border-radius: 0 0 30px 30px;
+      @include fluid-type(320px, 1200px, 16px, 30px);
+
+      p {
+        font-style: italic;
+        color: rgba(0, 0, 0, 0.6);
+      }
     }
   }
 }

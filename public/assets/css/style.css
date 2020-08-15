@@ -3,6 +3,54 @@
   width: 90%;
 }
 
+.weatherWrapper .weatherIntro {
+  width: 95%;
+  margin: 2.5%;
+  padding: 3vw;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 30px;
+  text-align: center;
+}
+
+.weatherWrapper .weatherIntro h2 {
+  font-family: "Sigmar One", cursive;
+  margin-bottom: 0.7em;
+}
+
+.weatherWrapper .weatherIntro h2 {
+  font-size: 20px;
+}
+
+@media screen and (min-width: 320px) {
+  .weatherWrapper .weatherIntro h2 {
+    font-size: calc( 20px + strip-unit(10px) * ((100vw - 320px) / strip-unit(880px)));
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .weatherWrapper .weatherIntro h2 {
+    font-size: 30px;
+  }
+}
+
+.weatherWrapper .weatherIntro p {
+  opacity: 0.7;
+  font-style: italic;
+}
+
+.weatherWrapper .weatherIntro p a {
+  opacity: 1;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+  -webkit-transition-duration: 1s;
+          transition-duration: 1s;
+}
+
+.weatherWrapper .weatherIntro p a:hover {
+  color: white;
+}
+
 .weatherWrapper .weatherContainer {
   width: 95%;
   margin: 2.5%;
@@ -34,6 +82,22 @@
   background-color: rgba(255, 255, 255, 0.6);
 }
 
+.weatherWrapper .weatherContainer .weatherTitle {
+  font-size: 16px;
+}
+
+@media screen and (min-width: 320px) {
+  .weatherWrapper .weatherContainer .weatherTitle {
+    font-size: calc( 16px + strip-unit(14px) * ((100vw - 320px) / strip-unit(880px)));
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .weatherWrapper .weatherContainer .weatherTitle {
+    font-size: 30px;
+  }
+}
+
 .weatherWrapper .weatherContainer .weatherDescription {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -43,7 +107,54 @@
           justify-content: space-between;
   padding: 1.5vh 2vh 4vh 2vh;
   background-color: rgba(255, 255, 255, 0.6);
+}
+
+.weatherWrapper .weatherContainer .weatherDescription {
+  font-size: 16px;
+}
+
+@media screen and (min-width: 320px) {
+  .weatherWrapper .weatherContainer .weatherDescription {
+    font-size: calc( 16px + strip-unit(14px) * ((100vw - 320px) / strip-unit(880px)));
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .weatherWrapper .weatherContainer .weatherDescription {
+    font-size: 30px;
+  }
+}
+
+.weatherWrapper .weatherContainer .weatherDescription p {
+  margin: 1vw;
+}
+
+.weatherWrapper .weatherContainer .weatherComment {
+  text-align: center;
+  padding: 1.5vh 2vh 4vh 2vh;
+  background-color: rgba(255, 255, 255, 0.6);
   border-radius: 0 0 30px 30px;
+}
+
+.weatherWrapper .weatherContainer .weatherComment {
+  font-size: 16px;
+}
+
+@media screen and (min-width: 320px) {
+  .weatherWrapper .weatherContainer .weatherComment {
+    font-size: calc( 16px + strip-unit(14px) * ((100vw - 320px) / strip-unit(880px)));
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .weatherWrapper .weatherContainer .weatherComment {
+    font-size: 30px;
+  }
+}
+
+.weatherWrapper .weatherContainer .weatherComment p {
+  font-style: italic;
+  color: rgba(0, 0, 0, 0.6);
 }
 
 body {

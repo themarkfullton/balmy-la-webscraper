@@ -24,9 +24,14 @@
             </div>
             <div class="actualNav" id="toggleNav">
                 <div class="actualNavContent">
-                    <p class="navLink"><a href="#">Log In / Log Out</a></p>
+                    {{#if user}}
+                    <p class="navLink"><a href="#">Log Out</a></p>
                     <p class="navLink"><a href="#">See All Commented Articles</a></p>
                     <p class="navLink"><a href="#">See Saved Articles</a></p>
+                    {{else}}
+                    <p class="navLink"><a href="#">Register</a></p>
+                    <p class="navLink"><a href="#">Log In</a></p>
+                    {{/if}}
                     <p class="navLink"><a href="#">See GitHub Repo</a></p>
                     <button class="navButtonBack" onclick="toggleNavbar()"><i
                             class="fas fa-chevron-circle-left fa-2x"></i></button>
