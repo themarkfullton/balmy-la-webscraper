@@ -34,6 +34,12 @@
 }
 
 .weatherWrapper .weatherContainer .weatherDescription {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   padding: 1.5vh 2vh 4vh 2vh;
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 0 0 30px 30px;
@@ -69,6 +75,11 @@
           transform: scale(1.5) perspective(1px);
   -webkit-transition-duration: 1s;
           transition-duration: 1s;
+}
+
+.pageWrapper .navWrapper .navContent {
+  padding-top: 20vh;
+  padding-left: 10vw;
 }
 
 .pageWrapper .navWrapper .actualNav {
