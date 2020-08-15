@@ -1,5 +1,10 @@
 @import "variables", "weather";
 
+body {
+  font-family: $body-font-fam;
+  @include fluid-type(320px, 1200px, 16px, 24px);
+}
+
 .pageWrapper {
   width: 100vw;
   height: 100vh;
@@ -7,7 +12,7 @@
   .navWrapper {
     position: fixed;
     z-index: 3;
-    width: 20%;
+    width: 35%;
     height: 100%;
     text-align: center;
     padding-top: 0.25vh;
@@ -28,9 +33,27 @@
     }
 
     .navContent {
-      padding-top: 20vh;
-      padding-left: 10vw;
+      padding-top: 30vh;
+      padding-left: 2.5vw;
+      color: #fff;
+      text-align: center;
+
+      h1 {
+        font-family: $header-font-fam;
+        @include fluid-type(320px, 1200px, 27px, 50px);
+        line-height: 1.2em;
+        margin-bottom: 5vh;
+        border-bottom: 2px rgba(255, 255, 255, 0.7) double;
+      }
+
+      p {
+        font-family: $body-font-fam;
+        font-weight: bolder;
+        line-height: 1.2em;
+        @include fluid-type(320px, 1200px, 20px, 40px);
+      }
     }
+
     .actualNav {
       position: fixed;
       display: none;
