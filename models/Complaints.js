@@ -11,10 +11,6 @@ var complaintSchema = new Schema({
     type: Number,
     default: 0,
   },
-  numRating: {
-    type: Number,
-    default: 0,
-  },
   body: {
     type: String,
     required: true,

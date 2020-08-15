@@ -1,17 +1,18 @@
-let axios = require("axios");
-let cheerio = require("cheerio");
-let mongoose = require("mongoose");
-let db = require("../models");
+const axios = require("axios");
+const cheerio = require("cheerio");
+const mongoose = require("mongoose");
+const db = require("../models");
+const argon2 = require("argon2");
 require("dotenv").config();
 
 mongoose.Promise = Promise;
 
-mongoose.connect(process.env.TWICE_REMOVED_DB, {
+mongoose.connect(process.env.DB, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
 
-let mongooseConnection = mongoose.connection;
+const mongooseConnection = mongoose.connection;
 
 mongooseConnection.on(
   "error",
@@ -60,5 +61,28 @@ module.exports = (app) => {
 
   app.get("/register", (req, res) => {
     res.render("register");
+  });
+
+  //==============================================
+  // Post Routes
+  //==============================================
+
+  app.post("/register", async (req, res) => {
+    const { username, password } = req.body;
+
+    const hashword = await argon2.hash(password);
+
+    await db.User.findOne({ username: username }, "username", (err, resp) => {
+      if (err) return handleError(err);
+    }).then((resp) => {
+      if (resp === null) {
+        db.User.create({
+          username: username,
+          password: hashword,
+        })
+          .then((resp) => res.redirect("/"))
+          .catch((err) => res.json(err));
+      }
+    });
   });
 };
