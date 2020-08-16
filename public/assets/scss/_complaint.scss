@@ -1,0 +1,55 @@
+.commentWrapper {
+  width: 90%;
+  .commentContent {
+    margin: 2.5%;
+    margin-top: 30vh;
+    padding: 6vw 3vw;
+    width: 95%;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 30px;
+    text-align: center;
+
+    h1 {
+      font-family: $header-font-fam;
+      @include fluid-type(320px, 1200px, 20px, 30px);
+      margin-bottom: 0.7em;
+    }
+
+    .commentImg {
+      height: 10vw;
+    }
+
+    textarea {
+      width: 90%;
+      margin-top: 3vh;
+      background-color: rgba(255, 255, 255, 0.6);
+      color: black;
+      font-weight: bold;
+      border: none;
+      padding: 2vh 2vw;
+      border-radius: 30px;
+    }
+
+    h2 {
+      margin-top: 5vh;
+    }
+
+    input {
+      width: 100%;
+      margin: 2vh 0;
+      display: block;
+      border: none;
+      padding: 2vh 2vw;
+      font-family: $body-font-fam;
+      font-weight: bold;
+      border-radius: 30px;
+      background-color: #ff6103;
+      color: white;
+
+      &:hover {
+        background-color: white;
+        color: #ff6103;
+      }
+    }
+  }
+}

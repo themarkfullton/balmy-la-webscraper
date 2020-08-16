@@ -1,0 +1,17 @@
+<div class="commentWrapper">
+    <div class="commentContent">
+        {{#if user}}
+        {{#each weather}}
+        <img class="commentImg" src="{{this.weatherImg}}">
+        <h1>{{this.dayName}} | {{this.dayNumber}}</h1>
+        <p>{{this.temp}} | {{this.weatherDesc}}</p>
+
+        <h2>What's your complaint?</h2>
+        <textarea id="complaint" name="complaint" rows="4" cols="50">Complaint</textarea>
+        <input type="submit" value="Complain">
+        {{/each}}
+        {{else}}
+        <p>An error occured. Please return to <a href="http://localhost:3000">the homepage</a></p>
+        {{/if}}
+    </div>
+</div>

@@ -135,4 +135,25 @@ module.exports = (app) => {
       }
     });
   });
+
+  app.post("/complain", (req, res) => {
+    var complaintToExplain = [
+      {
+        dayName: req.body.dayName,
+        dayNumber: req.body.dayNumber,
+        temp: req.body.temp,
+        weatherImg: req.body.weather,
+        weatherDesc: req.body.weatherDesc,
+      },
+    ];
+
+    var cookieUser = req.session.user ? true : false;
+
+    console.log(cookieUser);
+
+    res.render("complaint", {
+      weather: complaintToExplain,
+      user: cookieUser,
+    });
+  });
 };

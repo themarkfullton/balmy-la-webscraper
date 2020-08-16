@@ -230,6 +230,78 @@
   color: black;
 }
 
+.commentWrapper {
+  width: 90%;
+}
+
+.commentWrapper .commentContent {
+  margin: 2.5%;
+  margin-top: 30vh;
+  padding: 6vw 3vw;
+  width: 95%;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 30px;
+  text-align: center;
+}
+
+.commentWrapper .commentContent h1 {
+  font-family: "Sigmar One", cursive;
+  margin-bottom: 0.7em;
+}
+
+.commentWrapper .commentContent h1 {
+  font-size: 20px;
+}
+
+@media screen and (min-width: 320px) {
+  .commentWrapper .commentContent h1 {
+    font-size: calc( 20px + strip-unit(10px) * ((100vw - 320px) / strip-unit(880px)));
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .commentWrapper .commentContent h1 {
+    font-size: 30px;
+  }
+}
+
+.commentWrapper .commentContent .commentImg {
+  height: 10vw;
+}
+
+.commentWrapper .commentContent textarea {
+  width: 90%;
+  margin-top: 3vh;
+  background-color: rgba(255, 255, 255, 0.6);
+  color: black;
+  font-weight: bold;
+  border: none;
+  padding: 2vh 2vw;
+  border-radius: 30px;
+}
+
+.commentWrapper .commentContent h2 {
+  margin-top: 5vh;
+}
+
+.commentWrapper .commentContent input {
+  width: 100%;
+  margin: 2vh 0;
+  display: block;
+  border: none;
+  padding: 2vh 2vw;
+  font-family: "Sen", sans-serif;
+  font-weight: bold;
+  border-radius: 30px;
+  background-color: #ff6103;
+  color: white;
+}
+
+.commentWrapper .commentContent input:hover {
+  background-color: white;
+  color: #ff6103;
+}
+
 body {
   font-family: "Sen", sans-serif;
 }
