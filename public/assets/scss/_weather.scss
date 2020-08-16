@@ -81,10 +81,24 @@
       background-color: rgba(255, 255, 255, 0.6);
       border-radius: 0 0 30px 30px;
       @include fluid-type(320px, 1200px, 16px, 30px);
+      text-align: center;
 
-      p {
-        font-style: italic;
-        color: rgba(0, 0, 0, 0.6);
+      input {
+        width: 100%;
+        display: block;
+        border: none;
+        padding: 2vh 2vw;
+        font-family: $body-font-fam;
+        font-weight: bold;
+        border-radius: 30px;
+        background-color: #ff6103;
+        color: white;
+
+        &:hover {
+          opacity: 0.7;
+          background-color: white;
+          color: #ff6103;
+        }
       }
     }
   }

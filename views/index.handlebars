@@ -5,23 +5,21 @@
     </div>
     {{#each weather}}
     <div class="weatherContainer">
-        <div class="weatherImageDiv">
-            <img class="weatherImage" src="{{this.weather}}">
-        </div>
-        <div class="weatherTitle">
-            <p>{{this.dayName}} | {{this.dayNumber}}</p>
-        </div>
-        <div class="weatherDescription">
-            <p>{{this.temp}}</p>
-            <p>{{this.weatherDesc}}</p>
-        </div>
-        <div class="weatherComment">
-            {{#if user}}
-            <i class="fas fa-comment"></i>
-            {{else}}
-            <p>Please log in to add a comment</p>
-            {{/if}}
-        </div>
+        <form action="/complain" method="post">
+            <div class="weatherImageDiv">
+                <img class="weatherImage" src="{{this.weather}}" data="{{this.weather}}">
+            </div>
+            <div class="weatherTitle" data-dow="{{this.dayName}}" data-num="{{this.dayNumber}}">
+                <p>{{this.dayName}} | {{this.dayNumber}}</p>
+            </div>
+            <div class="weatherDescription" data-temp="{{this.temp}}" data-desc="{{this.weatherDesc}}">
+                <p>{{this.temp}}</p>
+                <p>{{this.weatherDesc}}</p>
+            </div>
+            <div class="weatherComment">
+                <input type="submit" value="Complain About This Weather">
+            </div>
+        </form>
     </div>
     {{/each}}
 </div>
