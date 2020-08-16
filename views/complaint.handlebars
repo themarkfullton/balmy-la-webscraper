@@ -7,11 +7,18 @@
         <p>{{this.temp}} | {{this.weatherDesc}}</p>
 
         <h2>What's your complaint?</h2>
-        <textarea id="complaint" name="complaint" rows="4" cols="50" placeholder="Complaint"></textarea>
-        <input type="submit" value="Complain">
+        <form action="/add-complaint" method="POST">
+            <input type="hidden" name="weatherImg" value="{{this.weatherImg}}">
+            <input type="hidden" name="dayName" value="{{this.dayName}}">
+            <input type="hidden" name="dayNumber" value="{{this.dayNumber}}">
+            <input type="hidden" name="temp" value="{{this.temp}}">
+            <input type="hidden" name="weatherDesc" value="{{this.weatherDesc}}">
+            <textarea id="complaint" name="complaint" rows="4" cols="50" placeholder="Complaint"></textarea>
+            <input type="submit" value="Complain">
+        </form>
         {{/each}}
         {{else}}
-        <p>An error occured. Please return to <a href="http://localhost:3000">the homepage</a></p>
+        <p>An error occured. Please return to <a href="/">the homepage</a></p>
         {{/if}}
     </div>
 </div>
