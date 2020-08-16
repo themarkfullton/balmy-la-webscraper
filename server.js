@@ -17,23 +17,11 @@ app.engine(
     defaultLayout: "main",
   })
 );
+
 app.set("view engine", "handlebars");
 
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
 });
-
-app.use(
-  session({
-    name: "sid",
-    saveUninitialized: false,
-    resave: false,
-    secret: process.env.SECRET_KEY,
-    cookie: {
-      maxAge: 28800000,
-      sameSite: true,
-    },
-  })
-);
 
 var routes = require("./routes/balmyLAController")(app);

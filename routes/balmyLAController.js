@@ -28,6 +28,19 @@ mongooseConnection.once("open", function () {
 // ==============================================
 
 module.exports = (app) => {
+  app.use(
+    session({
+      name: "sid",
+      saveUninitialized: false,
+      resave: false,
+      secret: process.env.SECRET_KEY,
+      cookie: {
+        maxAge: 28800000,
+        sameSite: true,
+      },
+    })
+  );
+
   app.get("/", (req, res) => {
     axios
       .get(
@@ -54,9 +67,13 @@ module.exports = (app) => {
           });
         });
 
+        var cookieUser = req.session.user ? true : false;
+
+        console.log(cookieUser);
+
         res.render("index", {
           weather: weatherToSend.data,
-          user: req.session.userId,
+          user: cookieUser,
         });
       });
   });
@@ -87,7 +104,7 @@ module.exports = (app) => {
           password: hashword,
         })
           .then((resp) => {
-            req.session.userId = username;
+            req.session.user = username;
             res.redirect("/");
           })
           .catch((err) => res.json(err));
@@ -111,7 +128,7 @@ module.exports = (app) => {
       const valid = await argon2.verify(searchSet, password);
 
       if (valid) {
-        req.session.userId = searchSet.username;
+        req.session.user = resp.username;
         res.redirect("/");
       } else {
         res.redirect("/register");
