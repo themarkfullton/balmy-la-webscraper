@@ -25,14 +25,17 @@
             <div class="actualNav" id="toggleNav">
                 <div class="actualNavContent">
                     {{#if user}}
-                    <p class="navLink"><a href="#">Log Out</a></p>
-                    <p class="navLink"><a href="#">See All Commented Articles</a></p>
-                    <p class="navLink"><a href="#">See Saved Articles</a></p>
+                    <p class="navLink">
+                    <form action="/logout" method="POST"><input type="submit" value="Log Out"></form>
+                    </p>
+                    <p class="navLink"><a href="#">All Complaints</a></p>
                     {{else}}
                     <p class="navLink"><a href="/register">Create Account</a></p>
                     <p class="navLink"><a href="/login">Log In</a></p>
                     {{/if}}
-                    <p class="navLink"><a href="#">See GitHub Repo</a></p>
+                    <p class="navLink"><a href="/">Today's Weather</a></p>
+                    <p class="navLink"><a href="https://github.com/themarkfullton/balmy-la-webscraper">See GitHub
+                            Repo</a></p>
                     <button class="navButtonBack" onclick="toggleNavbar()"><i
                             class="fas fa-chevron-circle-left fa-2x"></i></button>
                 </div>
