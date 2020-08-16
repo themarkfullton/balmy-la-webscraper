@@ -20,8 +20,8 @@ let userSchema = new Schema({
 
   complaint: [
     {
-      type: Schema.Types.ObjectId,
-      ref: "Complaint",
+      type: String,
+      required: true,
     },
   ],
 });

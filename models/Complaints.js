@@ -15,6 +15,10 @@ var complaintSchema = new Schema({
     type: String,
     required: true,
   },
+  weather: {
+    type: String,
+    required: true,
+  },
 });
 
 var Complaint = mongoose.model("Complaint", complaintSchema);
