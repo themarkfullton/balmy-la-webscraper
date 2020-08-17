@@ -14,8 +14,12 @@
             <p>{{this.temp}}</p>
             <p>{{this.weatherDesc}}</p>
         </div>
-        <div class="weatherComment">
-
+        <div class="weatherComplaints">
+            {{#each this.complaints}}
+            <p>Author: {{this.author}}</p>
+            <p>Complaint: {{this.body}}</p>
+            <br>
+            {{/each}}
         </div>
     </div>
     {{/each}}

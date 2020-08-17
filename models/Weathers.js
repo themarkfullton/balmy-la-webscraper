@@ -28,6 +28,8 @@ let weatherSchema = new Schema(
       type: String,
       required: true,
     },
+
+    complaints: [],
   },
   {
     toObject: {

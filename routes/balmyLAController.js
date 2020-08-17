@@ -87,10 +87,32 @@ module.exports = (app) => {
   });
 
   app.get("/show-complaints", async (req, res) => {
-    await db.Weather.find({}).then(async (resp) => {
-      console.log(resp);
-      res.render("showComplaints", resp);
-    });
+    await db.Weather.find({})
+      .lean()
+      .then(async (resp) => {
+        let objectToSend = {
+          data: [],
+        };
+
+        var complaintsToAdd = [];
+
+        for (var i = 0; i < resp.length; i++) {
+          objectToSend.data.push(resp[i]);
+          await db.Complaint.find({ weather: resp[i]._id })
+            .lean()
+            .then(async (rComp) => {
+              for (var j = 0; j < rComp.length; j++) {
+                complaintsToAdd.push(rComp[j]);
+              }
+
+              resp[i].complaints = complaintsToAdd;
+
+              objectToSend.data.push(resp[i]);
+            });
+        }
+        console.log(`SENDING: ${JSON.stringify(objectToSend.data)}`);
+        res.render("showComplaints", { weathers: objectToSend.data });
+      });
   });
   //==============================================
   // Post Routes
