@@ -7,7 +7,7 @@
     "node": "12.18.1",
     "npm": "6.14.5"
   },
-  "proxy": "http://localhost:3000",
+  "proxy": "https://balmy-la-webscraper.herokuapp.com",
   "scripts": {
     "start": "node server.js",
     "watch": "nodemon server.js"
