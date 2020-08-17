@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const db = require("../models");
 const argon2 = require("argon2");
 const session = require("express-session");
+const { Complaint } = require("../models");
 require("dotenv").config();
 
 mongoose.Promise = Promise;
@@ -154,6 +155,62 @@ module.exports = (app) => {
     res.render("complaint", {
       weather: complaintToExplain,
       user: cookieUser,
+    });
+  });
+
+  app.post("/add-complaint", async (req, res) => {
+    await db.Weather.findOne(
+      { dayNumber: req.body.dayNumber },
+      "dayNumber",
+      (err, resp) => {
+        if (err) return handleError(err);
+      }
+    ).then(async (resp) => {
+      if (resp === null) {
+        await db.Weather.create({
+          dayName: req.body.dayName,
+
+          dayNumber: req.body.dayNumber,
+
+          temp: req.body.temp,
+
+          weather: req.body.weatherImg,
+
+          weatherDesc: req.body.weatherDesc,
+        }).then(async (resp) => {
+          var addedWeather = resp._id;
+
+          await db.Complaint.create({
+            author: req.session.user,
+            rating: 0,
+            body: req.body.complaint,
+          })
+            .then(async (err, resp) => {
+              console.log(resp);
+              await db.Weather.findByIdAndUpdate(
+                { addedWeather },
+                { $push: { complaint: resp } }
+              );
+            })
+            .catch((err) => res.json(err));
+        });
+      } else {
+        var addedWeather = resp._id;
+
+        await db.Complaint.create({
+          author: req.session.user,
+          rating: 0,
+          body: req.body.complaint,
+        })
+          .then(async (err, resp) => {
+            console.log(resp);
+            await db.Weather.findByIdAndUpdate(
+              { addedWeather },
+              { $push: { complaint: resp } }
+            );
+          })
+          .catch((err) => res.json(err));
+      }
     });
   });
 
