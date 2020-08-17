@@ -5,7 +5,6 @@ const db = require("../models");
 const argon2 = require("argon2");
 const session = require("express-session");
 const path = require("path");
-require("dotenv").config();
 
 module.exports = (app) => {
   mongoose.Promise = Promise;
