@@ -12,18 +12,6 @@ let userSchema = new Schema({
     type: String,
     required: true,
   },
-
-  numRating: {
-    type: Number,
-    default: 0,
-  },
-
-  complaint: [
-    {
-      type: String,
-      required: true,
-    },
-  ],
 });
 
 let User = mongoose.model("User", userSchema);

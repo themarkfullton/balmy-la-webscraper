@@ -27,13 +27,6 @@ let weatherSchema = new Schema({
     type: String,
     required: true,
   },
-
-  complaint: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Complaint",
-    },
-  ],
 });
 
 let Weather = mongoose.model("Weather", weatherSchema);

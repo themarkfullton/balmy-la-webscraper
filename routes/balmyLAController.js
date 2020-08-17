@@ -62,7 +62,7 @@ module.exports = (app) => {
             dayNumber: $(element).find(".sub").text(),
             temp: $(element).find(".high").text(),
             weather:
-              "https://www.accuweather.com/" +
+              "https://www.accuweather.com" +
               $(element).find("img.weather-icon").attr("data-src"),
             weatherDesc: $(element).find("div.phrase").text(),
           });
@@ -186,11 +186,11 @@ module.exports = (app) => {
             body: req.body.complaint,
           })
             .then(async (err, resp) => {
-              console.log(resp);
+              console.log(resp.value);
               await db.Weather.findByIdAndUpdate(
                 { addedWeather },
-                { $push: { complaint: resp } }
-              );
+                { $push: { complaint: resp.value } }
+              ).catch((err) => res.json(err));
             })
             .catch((err) => res.json(err));
         });
@@ -207,10 +207,11 @@ module.exports = (app) => {
             await db.Weather.findByIdAndUpdate(
               { addedWeather },
               { $push: { complaint: resp } }
-            );
+            ).catch((err) => res.json(err));
           })
           .catch((err) => res.json(err));
       }
+      return res.redirect("/");
     });
   });
 
