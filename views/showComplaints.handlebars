@@ -1,30 +1,22 @@
 <div class="weatherWrapper">
     <div class="weatherIntro">
-        <h2>Weather to Compain About</h2>
-        <p>Pulled from <a href="https://www.accuweather.com/">Accuweather</a></p>
+        <h2>All Complaints</h2>
     </div>
-    {{#each weather}}
+    {{#each weathers}}
     <div class="weatherContainer">
-        <form action="/complain" method="post">
-            <input type="hidden" name="weather" value="{{this.weather}}">
-            <input type="hidden" name="dayName" value="{{this.dayName}}">
-            <input type="hidden" name="dayNumber" value="{{this.dayNumber}}">
-            <input type="hidden" name="temp" value="{{this.temp}}">
-            <input type="hidden" name="weatherDesc" value="{{this.weatherDesc}}">
-            <div class="weatherImageDiv">
-                <img class="weatherImage" src="{{this.weather}}">
-            </div>
-            <div class="weatherTitle">
-                <p>{{this.dayName}} | {{this.dayNumber}}</p>
-            </div>
-            <div class="weatherDescription">
-                <p>{{this.temp}}</p>
-                <p>{{this.weatherDesc}}</p>
-            </div>
-            <div class="weatherComment">
-                <input type="submit" value="Complain About This Weather">
-            </div>
-        </form>
+        <div class="weatherImageDiv">
+            <img class="weatherImage" src="{{this.weather}}">
+        </div>
+        <div class="weatherTitle">
+            <p>{{this.dayName}} | {{this.dayNumber}}</p>
+        </div>
+        <div class="weatherDescription">
+            <p>{{this.temp}}</p>
+            <p>{{this.weatherDesc}}</p>
+        </div>
+        <div class="weatherComment">
+
+        </div>
     </div>
     {{/each}}
 </div>
