@@ -4,7 +4,6 @@ const mongoose = require("mongoose");
 const db = require("../models");
 const argon2 = require("argon2");
 const session = require("express-session");
-const { Complaint } = require("../models");
 require("dotenv").config();
 
 mongoose.Promise = Promise;
@@ -123,7 +122,6 @@ module.exports = (app) => {
         if (err) return handleError(err);
       }
     ).then(async (resp) => {
-      console.log(resp);
       var searchSet = resp.password;
 
       const valid = await argon2.verify(searchSet, password);
@@ -149,8 +147,6 @@ module.exports = (app) => {
     ];
 
     var cookieUser = req.session.user ? true : false;
-
-    console.log(cookieUser);
 
     res.render("complaint", {
       weather: complaintToExplain,
@@ -178,19 +174,16 @@ module.exports = (app) => {
 
           weatherDesc: req.body.weatherDesc,
         }).then(async (resp) => {
+          console.log(resp);
           var addedWeather = resp._id;
 
           await db.Complaint.create({
             author: req.session.user,
-            rating: 0,
+            weather: addedWeather,
             body: req.body.complaint,
           })
-            .then(async (err, resp) => {
-              console.log(resp.value);
-              await db.Weather.findByIdAndUpdate(
-                { addedWeather },
-                { $push: { complaint: resp.value } }
-              ).catch((err) => res.json(err));
+            .then((resp) => {
+              res.redirect("/");
             })
             .catch((err) => res.json(err));
         });
@@ -199,19 +192,14 @@ module.exports = (app) => {
 
         await db.Complaint.create({
           author: req.session.user,
-          rating: 0,
+          weather: addedWeather,
           body: req.body.complaint,
         })
           .then(async (err, resp) => {
-            console.log(resp);
-            await db.Weather.findByIdAndUpdate(
-              { addedWeather },
-              { $push: { complaint: resp } }
-            ).catch((err) => res.json(err));
+            res.redirect("/");
           })
           .catch((err) => res.json(err));
       }
-      return res.redirect("/");
     });
   });
 
