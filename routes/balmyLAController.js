@@ -49,7 +49,7 @@ module.exports = (app) => {
     })
   );
 
-  app.get("/", (req, res) => {
+  app.get("/", async (req, res) => {
     axios
       .get(
         "https://www.accuweather.com/en/us/los-angeles/90012/daily-weather-forecast/347625"
