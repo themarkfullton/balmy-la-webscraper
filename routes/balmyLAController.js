@@ -8,7 +8,7 @@ require("dotenv").config();
 
 mongoose.Promise = Promise;
 
-mongoose.connect(process.env.DB, {
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
