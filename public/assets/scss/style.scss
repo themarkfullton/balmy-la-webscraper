@@ -83,6 +83,23 @@ body {
             }
           }
         }
+
+        input {
+          @include fluid-type(320px, 1200px, 25px, 40px);
+          letter-spacing: 0.5rem;
+          font-family: $header-font-fam;
+          background-color: transparent;
+          margin-bottom: 5vh;
+          text-decoration: none;
+          color: black;
+          @include transition-time;
+          border: none;
+
+          &:hover {
+            color: white;
+          }
+        }
+
         .navButtonBack {
           color: rgba(0, 0, 0, 0.5);
           bottom: 10vh;

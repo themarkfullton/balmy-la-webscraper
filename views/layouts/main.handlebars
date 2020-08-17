@@ -24,16 +24,16 @@
             </div>
             <div class="actualNav" id="toggleNav">
                 <div class="actualNavContent">
+                    <p class="navLink"><a href="/">Weather</a></p>
                     {{#if user}}
+                    <p class="navLink"><a href="/show-complaints">All Complaints</a></p>
                     <p class="navLink">
-                    <form action="/logout" method="POST"><input type="submit" value="Log Out"></form>
+                    <form action="/logout" method="POST"><input type="submit" class="navLink" value="Log Out"></form>
                     </p>
-                    <p class="navLink"><a href="#">All Complaints</a></p>
                     {{else}}
                     <p class="navLink"><a href="/register">Create Account</a></p>
                     <p class="navLink"><a href="/login">Log In</a></p>
                     {{/if}}
-                    <p class="navLink"><a href="/">Today's Weather</a></p>
                     <p class="navLink"><a href="https://github.com/themarkfullton/balmy-la-webscraper">See GitHub
                             Repo</a></p>
                     <button class="navButtonBack" onclick="toggleNavbar()"><i

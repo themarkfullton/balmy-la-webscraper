@@ -28,6 +28,14 @@ mongooseConnection.once("open", function () {
 // ==============================================
 
 module.exports = (app) => {
+  const redirectLogin = (req, res, next) => {
+    if (!req.session.user) {
+      res.redirect("/");
+    } else {
+      next();
+    }
+  };
+
   app.use(
     session({
       name: "sid",
@@ -86,7 +94,7 @@ module.exports = (app) => {
     res.render("register");
   });
 
-  app.get("/show-complaints", async (req, res) => {
+  app.get("/show-complaints", redirectLogin, async (req, res) => {
     await db.Weather.find({})
       .lean()
       .then(async (resp) => {
@@ -146,21 +154,25 @@ module.exports = (app) => {
       (err, resp) => {
         if (err) return handleError(err);
       }
-    ).then(async (resp) => {
-      var searchSet = resp.password;
+    )
+      .then(async (resp) => {
+        var searchSet = resp.password;
 
-      const valid = await argon2.verify(searchSet, password);
+        const valid = await argon2.verify(searchSet, password);
 
-      if (valid) {
-        req.session.user = resp.username;
-        res.redirect("/");
-      } else {
+        if (valid) {
+          req.session.user = resp.username;
+          res.redirect("/");
+        } else {
+          res.redirect("/register");
+        }
+      })
+      .catch((err) => {
         res.redirect("/register");
-      }
-    });
+      });
   });
 
-  app.post("/complain", (req, res) => {
+  app.post("/complain", redirectLogin, (req, res) => {
     var complaintToExplain = [
       {
         dayName: req.body.dayName,
@@ -179,7 +191,7 @@ module.exports = (app) => {
     });
   });
 
-  app.post("/add-complaint", async (req, res) => {
+  app.post("/add-complaint", redirectLogin, async (req, res) => {
     await db.Weather.findOne(
       { dayNumber: req.body.dayNumber },
       "dayNumber",
