@@ -86,6 +86,33 @@ module.exports = (app) => {
     res.render("register");
   });
 
+  app.get("/show-complaints", async (req, res) => {
+    var objectToSend = {
+      data: [],
+    };
+
+    await db.Weather.find({}).then(async (resp) => {
+      console.log(resp[0]);
+
+      for (var i = 0; i < resp.length; i++) {
+        await db.Complaint.find({ weather: resp[i]._id }).then((rComp) => {
+          let toAddComplaints = [];
+          for (var j = 0; j < rComp.length; j++) {
+            toAddComplaints.push(rComp[i]);
+          }
+          let toAddWeatherObj = {
+            weather: resp[i],
+            complaints: toAddComplaints,
+          };
+
+          objectToSend.data.push(toAddWeatherObj);
+        });
+      }
+      console.log(`data: ${JSON.stringify(objectToSend.data)}`);
+
+      res.render("showComplaints", { weather: objectToSend.data });
+    });
+  });
   //==============================================
   // Post Routes
   //==============================================
