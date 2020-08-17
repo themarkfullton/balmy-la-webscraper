@@ -94,21 +94,18 @@ module.exports = (app) => {
           data: [],
         };
 
-        var complaintsToAdd = [];
-
         for (var i = 0; i < resp.length; i++) {
-          objectToSend.data.push(resp[i]);
           await db.Complaint.find({ weather: resp[i]._id })
             .lean()
             .then(async (rComp) => {
+              let complaintsToAdd = [];
               for (var j = 0; j < rComp.length; j++) {
                 complaintsToAdd.push(rComp[j]);
               }
 
               resp[i].complaints = complaintsToAdd;
-
-              objectToSend.data.push(resp[i]);
             });
+          objectToSend.data.push(resp[i]);
         }
         console.log(`SENDING: ${JSON.stringify(objectToSend.data)}`);
         res.render("showComplaints", { weathers: objectToSend.data });

@@ -16,8 +16,10 @@
         </div>
         <div class="weatherComplaints">
             {{#each this.complaints}}
-            <p>Author: {{this.author}}</p>
-            <p>Complaint: {{this.body}}</p>
+            <div class="individualComplaint">
+                <p class="authorComplaint">{{this.author}}</p>
+                <p class="complaint">{{this.body}}</p>
+            </div>
             <br>
             {{/each}}
         </div>

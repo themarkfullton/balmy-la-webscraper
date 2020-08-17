@@ -81,7 +81,6 @@
       background-color: rgba(255, 255, 255, 0.6);
       border-radius: 0 0 30px 30px;
       @include fluid-type(320px, 1200px, 16px, 30px);
-      text-align: center;
 
       input {
         width: 100%;
@@ -98,6 +97,43 @@
           opacity: 0.7;
           background-color: white;
           color: #ff6103;
+        }
+      }
+    }
+
+    .weatherComplaints {
+      padding: 1.5vh 2vh 4vh 2vh;
+      background-color: rgba(255, 255, 255, 0.6);
+      border-radius: 0 0 30px 30px;
+      @include fluid-type(320px, 1200px, 16px, 30px);
+      text-align: left;
+
+      .individualComplaint {
+        position: relative;
+        padding: 1.5vh 2vh 4vh 2vh;
+        border-radius: 30px;
+        background-color: rgba(255, 97, 3, 0.4);
+        margin-bottom: 5vh;
+
+        &:after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          width: 0;
+          height: 0;
+          border: 20px solid transparent;
+          border-top-color: rgba(255, 97, 3, 0.4);
+          border-bottom: 0;
+          border-left: 0;
+          margin-left: -10px;
+          margin-bottom: -20px;
+        }
+
+        .authorComplaint {
+          font-weight: bolder;
+          color: #fff;
+          margin-bottom: 1.5vh;
         }
       }
     }
