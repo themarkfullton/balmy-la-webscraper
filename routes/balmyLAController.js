@@ -4,30 +4,31 @@ const mongoose = require("mongoose");
 const db = require("../models");
 const argon2 = require("argon2");
 const session = require("express-session");
+const path = require("path");
 require("dotenv").config();
 
-mongoose.Promise = Promise;
-
-mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-
-const mongooseConnection = mongoose.connection;
-
-mongooseConnection.on(
-  "error",
-  console.error.bind(console, "connection error:")
-);
-mongooseConnection.once("open", function () {
-  console.log("Connected to Database");
-});
-
-// ==============================================
-// Routes
-// ==============================================
-
 module.exports = (app) => {
+  mongoose.Promise = Promise;
+
+  mongoose.connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
+
+  const mongooseConnection = mongoose.connection;
+
+  mongooseConnection.on(
+    "error",
+    console.error.bind(console, "connection error:")
+  );
+  mongooseConnection.once("open", function () {
+    console.log("Connected to Database");
+  });
+
+  // ==============================================
+  // Routes
+  // ==============================================
+
   const redirectLogin = (req, res, next) => {
     if (!req.session.user) {
       res.redirect("/");
@@ -103,7 +104,9 @@ module.exports = (app) => {
         };
 
         for (var i = 0; i < resp.length; i++) {
-          await db.Complaint.find({ weather: resp[i]._id })
+          await db.Complaint.find({
+            weather: resp[i]._id,
+          })
             .lean()
             .then(async (rComp) => {
               let complaintsToAdd = [];
@@ -116,7 +119,9 @@ module.exports = (app) => {
           objectToSend.data.push(resp[i]);
         }
         console.log(`SENDING: ${JSON.stringify(objectToSend.data)}`);
-        res.render("showComplaints", { weathers: objectToSend.data });
+        res.render("showComplaints", {
+          weathers: objectToSend.data,
+        });
       });
   });
   //==============================================

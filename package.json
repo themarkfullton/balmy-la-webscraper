@@ -22,9 +22,10 @@
     "express": "^4.17.1",
     "express-handlebars": "^5.1.0",
     "express-session": "^1.17.1",
-    "mongoose": "^5.10.0"
+    "mongoose": "^5.10.0",
+    "path": "^0.12.7"
   },
   "devDependencies": {
-    "handlebars": "^4.5.0"
+    "handlebars": "^4.7.6"
   }
 }
