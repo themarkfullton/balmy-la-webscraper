@@ -82,8 +82,7 @@ module.exports = (app) => {
           weather: weatherToSend.data,
           user: cookieUser,
         });
-      })
-      .catch((err) => res.render(err));
+      });
   });
 
   app.get("/login", (req, res) => {
