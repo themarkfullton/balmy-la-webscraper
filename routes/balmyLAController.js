@@ -51,7 +51,7 @@ module.exports = (app) => {
   app.get("/", (req, res) => res.render("intro"));
 
   app.get("/weather", (req, res) => {
-    /*axios
+    axios
       .get(
         "https://www.accuweather.com/en/us/los-angeles/90012/daily-weather-forecast/347625"
       )
@@ -78,20 +78,16 @@ module.exports = (app) => {
               });
             });
 
-            var cookieUser = req.session.user ? true : false;
+            /*var cookieUser = req.session.user ? true : false;*/
 
             res.render("index", {
               weather: weatherToSend.data,
-              user: cookieUser,
+              user: true,
             });
           }
         },
         (error) => console.log(err)
-      );*/
-    res.render("index", {
-      weather: true,
-      user: true,
-    });
+      );
   });
 
   app.get("/login", (req, res) => {
