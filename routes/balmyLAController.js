@@ -141,7 +141,7 @@ module.exports = (app) => {
         })
           .then((resp) => {
             req.session.user = username;
-            res.redirect("/");
+            res.redirect("/weather");
           })
           .catch((err) => res.json(err));
       }
@@ -165,7 +165,7 @@ module.exports = (app) => {
 
         if (valid) {
           req.session.user = resp.username;
-          res.redirect("/");
+          res.redirect("/weather");
         } else {
           res.redirect("/register");
         }
@@ -223,7 +223,7 @@ module.exports = (app) => {
             body: req.body.complaint,
           })
             .then((resp) => {
-              res.redirect("/");
+              res.redirect("/weather");
             })
             .catch((err) => res.json(err));
         });
@@ -236,7 +236,7 @@ module.exports = (app) => {
           body: req.body.complaint,
         })
           .then(async (err, resp) => {
-            res.redirect("/");
+            res.redirect("/weather");
           })
           .catch((err) => res.json(err));
       }
