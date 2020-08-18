@@ -50,39 +50,44 @@ module.exports = (app) => {
 
   app.get("/", (req, res) => res.render("intro"));
 
-  app.get("/weather", async (req, res) => {
-    await axios
+  app.get("/weather", (req, res) => {
+    axios
       .get(
         "https://www.accuweather.com/en/us/los-angeles/90012/daily-weather-forecast/347625"
       )
-      .then((response) => {
-        let $ = cheerio.load(response.data);
+      .then(
+        (response) => {
+          if (response.status === 200) {
+            let $ = cheerio.load(response.data);
 
-        console.log(req.session);
+            console.log(req.session);
 
-        var weatherToSend = {
-          data: [],
-        };
+            var weatherToSend = {
+              data: [],
+            };
 
-        $(".daily-wrapper").each((i, element) => {
-          weatherToSend.data.push({
-            dayName: $(element).find(".dow").text(),
-            dayNumber: $(element).find(".sub").text(),
-            temp: $(element).find(".high").text(),
-            weather:
-              "https://www.accuweather.com" +
-              $(element).find("img.weather-icon").attr("data-src"),
-            weatherDesc: $(element).find("div.phrase").text(),
-          });
-        });
+            $(".daily-wrapper").each((i, element) => {
+              weatherToSend.data.push({
+                dayName: $(element).find(".dow").text(),
+                dayNumber: $(element).find(".sub").text(),
+                temp: $(element).find(".high").text(),
+                weather:
+                  "https://www.accuweather.com" +
+                  $(element).find("img.weather-icon").attr("data-src"),
+                weatherDesc: $(element).find("div.phrase").text(),
+              });
+            });
 
-        var cookieUser = req.session.user ? true : false;
+            var cookieUser = req.session.user ? true : false;
 
-        res.render("index", {
-          weather: weatherToSend.data,
-          user: cookieUser,
-        });
-      });
+            res.render("index", {
+              weather: weatherToSend.data,
+              user: cookieUser,
+            });
+          }
+        },
+        (error) => console.log(err)
+      );
   });
 
   app.get("/login", (req, res) => {
