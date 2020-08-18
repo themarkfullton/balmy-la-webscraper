@@ -4,26 +4,25 @@ const mongoose = require("mongoose");
 const db = require("../models");
 const argon2 = require("argon2");
 const session = require("express-session");
-const path = require("path");
+
+mongoose.Promise = Promise;
+
+mongoose.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+const mongooseConnection = mongoose.connection;
+
+mongooseConnection.on(
+  "error",
+  console.error.bind(console, "connection error:")
+);
+mongooseConnection.once("open", function () {
+  console.log("Connected to Database");
+});
 
 module.exports = (app) => {
-  mongoose.Promise = Promise;
-
-  mongoose.connect(process.env.MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  });
-
-  const mongooseConnection = mongoose.connection;
-
-  mongooseConnection.on(
-    "error",
-    console.error.bind(console, "connection error:")
-  );
-  mongooseConnection.once("open", function () {
-    console.log("Connected to Database");
-  });
-
   // ==============================================
   // Routes
   // ==============================================
@@ -76,8 +75,6 @@ module.exports = (app) => {
         });
 
         var cookieUser = req.session.user ? true : false;
-
-        console.log(cookieUser);
 
         res.render("index", {
           weather: weatherToSend.data,
