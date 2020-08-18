@@ -55,39 +55,35 @@ module.exports = (app) => {
       .get(
         "https://www.accuweather.com/en/us/los-angeles/90012/daily-weather-forecast/347625"
       )
-      .then(
-        (response) => {
-          if (response.status === 200) {
-            let $ = cheerio.load(response.data);
+      .then((response) => {
+        let $ = cheerio.load(response.data);
 
-            console.log(req.session);
+        console.log(req.session);
 
-            var weatherToSend = {
-              data: [],
-            };
+        var weatherToSend = {
+          data: [],
+        };
 
-            $(".daily-wrapper").each((i, element) => {
-              weatherToSend.data.push({
-                dayName: $(element).find(".dow").text(),
-                dayNumber: $(element).find(".sub").text(),
-                temp: $(element).find(".high").text(),
-                weather:
-                  "https://www.accuweather.com" +
-                  $(element).find("img.weather-icon").attr("data-src"),
-                weatherDesc: $(element).find("div.phrase").text(),
-              });
-            });
+        $(".daily-wrapper").each((i, element) => {
+          weatherToSend.data.push({
+            dayName: $(element).find(".dow").text(),
+            dayNumber: $(element).find(".sub").text(),
+            temp: $(element).find(".high").text(),
+            weather:
+              "https://www.accuweather.com" +
+              $(element).find("img.weather-icon").attr("data-src"),
+            weatherDesc: $(element).find("div.phrase").text(),
+          });
+        });
 
-            /*var cookieUser = req.session.user ? true : false;*/
+        var cookieUser = req.session.user ? true : false;
 
-            res.render("index", {
-              weather: weatherToSend.data,
-              user: true,
-            });
-          }
-        },
-        (error) => console.log(err)
-      );
+        res.render("index", {
+          weather: weatherToSend.data,
+          user: cookieUser,
+        });
+      })
+      .catch((err) => res.render(err));
   });
 
   app.get("/login", (req, res) => {
