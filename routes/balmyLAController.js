@@ -48,7 +48,7 @@ module.exports = (app) => {
     })
   );
 
-  app.get("/", (req, res) => res.render("intro"));
+  app.get("/", (req, res) => res.render("intro", { user: req.session.user }));
 
   app.get("/weather", (req, res) => {
     axios
