@@ -48,7 +48,9 @@ module.exports = (app) => {
     })
   );
 
-  app.get("/", async (req, res) => {
+  app.get("/", (req, res) => res.render("intro"));
+
+  app.get("/weather", async (req, res) => {
     await axios
       .get(
         "https://www.accuweather.com/en/us/los-angeles/90012/daily-weather-forecast/347625"
