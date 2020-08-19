@@ -51,7 +51,7 @@ module.exports = (app) => {
   app.get("/", (req, res) => res.render("intro"));
 
   app.get("/weather", async (req, res) => {
-    axios
+    await axios
       .get(
         "https://www.weatherbug.com/weather-forecast/10-day-weather/los-angeles-ca-90007"
       )
@@ -73,7 +73,8 @@ module.exports = (app) => {
             weatherDesc: $(element).find(".description").text(),
           });
         });
-      });
+      })
+      .catch((err) => res.send(err));
 
     /*const weatherToSend = {
       data: [
