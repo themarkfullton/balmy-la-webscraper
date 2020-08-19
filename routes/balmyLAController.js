@@ -48,18 +48,16 @@ module.exports = (app) => {
     })
   );
 
-  app.get("/", (req, res) => res.render("intro", { user: req.session }));
+  app.get("/", (req, res) => res.render("intro"));
 
   app.get("/weather", async (req, res) => {
-    var cookieUser = req.session.user ? true : false;
-
     const weatherToSend = {
       data: [
         {
           dayName: "Mondary",
           dayNumber: "09/17",
           temp: "99",
-          weather: "/images/weathericons/1.svg",
+          weather: "images/weathericons/1.svg",
           weatherDesc: "Too Hot",
 
           complaints: [],
@@ -68,7 +66,7 @@ module.exports = (app) => {
           dayName: "Tuesdary",
           dayNumber: "09/18",
           temp: "102",
-          weather: "/images/weathericons/1.svg",
+          weather: "images/weathericons/1.svg",
           weatherDesc: "Still Too Hot",
 
           complaints: [],
@@ -77,13 +75,15 @@ module.exports = (app) => {
           dayName: "Wedary",
           dayNumber: "09/19",
           temp: "90",
-          weather: "/images/weathericons/1.svg",
+          weather: "images/weathericons/1.svg",
           weatherDesc: "What'd I say?",
 
           complaints: [],
         },
       ],
     };
+
+    var cookieUser = req.session.user ? true : false;
 
     res.render("index", {
       weather: weatherToSend.data,
