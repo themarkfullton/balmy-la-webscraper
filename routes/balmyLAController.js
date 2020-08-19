@@ -56,7 +56,7 @@ module.exports = (app) => {
         "https://www.weatherbug.com/weather-forecast/10-day-weather/los-angeles-ca-90007"
       )
       .then((resp) => {
-        res.send(resp.data);
+        res.send(JSON.stringify(resp.data));
         /*let $ = cheerio.load(resp.data);
 
         console.log(req.session);
