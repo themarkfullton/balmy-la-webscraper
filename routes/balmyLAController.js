@@ -50,7 +50,7 @@ module.exports = (app) => {
 
   app.get("/", (req, res) => res.render("intro"));
 
-  app.get("/weather", async (req, res) => {
+  app.get("/weather", (req, res) => {
     axios
       .get(
         "https://www.weatherbug.com/weather-forecast/10-day-weather/los-angeles-ca-90007"
@@ -72,6 +72,13 @@ module.exports = (app) => {
             weather: $(element).find("img").attr("src"),
             weatherDesc: $(element).find(".description").text(),
           });
+        });
+
+        var cookieUser = req.session.user ? true : false;
+
+        res.render("index", {
+          weather: weatherToSend.data,
+          user: cookieUser,
         });
       })
       .catch((err) => res.send(`Axios failed: ${err.message}`));
@@ -107,13 +114,6 @@ module.exports = (app) => {
         },
       ],
     };*/
-
-    var cookieUser = req.session.user ? true : false;
-
-    await res.render("index", {
-      weather: weatherToSend.data,
-      user: cookieUser,
-    });
   });
 
   app.get("/login", (req, res) => {
