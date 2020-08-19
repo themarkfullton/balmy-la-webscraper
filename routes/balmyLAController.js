@@ -82,7 +82,7 @@ module.exports = (app) => {
           user: cookieUser,
         }); */
       })
-      .catch((err) => res.send(`Axios failed: ${JSON.stringify(err.message)}`));
+      .catch((err) => res.send(`Axios failed: ${JSON.stringify(err)}`));
 
     /*const weatherToSend = {
       data: [
