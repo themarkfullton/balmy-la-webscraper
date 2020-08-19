@@ -50,8 +50,8 @@ module.exports = (app) => {
 
   app.get("/", (req, res) => res.render("intro"));
 
-  app.get("/weather", (req, res) => {
-    axios
+  app.get("/weather", async (req, res) => {
+    await axios
       .get(
         "https://www.weatherbug.com/weather-forecast/10-day-weather/los-angeles-ca-90007"
       )
