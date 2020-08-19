@@ -110,7 +110,7 @@ module.exports = (app) => {
 
     var cookieUser = req.session.user ? true : false;
 
-    res.render("index", {
+    await res.render("index", {
       weather: weatherToSend.data,
       user: cookieUser,
     });
