@@ -23,8 +23,8 @@ mongooseConnection.once("open", function () {
 });
 
 module.exports = (app) => {
-  async function fetchHTML(url) {
-    await axios
+  function fetchHTML(url) {
+    axios
       .get(
         "https://www.accuweather.com/en/us/los-angeles/90012/daily-weather-forecast/347625"
       )
