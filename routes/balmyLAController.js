@@ -23,36 +23,6 @@ mongooseConnection.once("open", function () {
 });
 
 module.exports = (app) => {
-  function fetchHTML(url) {
-    axios
-      .get(
-        "https://weather.com/weather/tenday/l/a4bf563aa6c1d3b3daffff43f51e3d7f765f43968cddc0475b9f340601b8cc26#detailIndex5"
-      )
-      .then((resp) => {
-        let $ = cheerio.load(response.data);
-
-        console.log(req.session);
-
-        var weatherToSend = {
-          data: [],
-        };
-
-        $(".daily-wrapper").each((i, element) => {
-          weatherToSend.data.push({
-            dayName: $(element).find(".dow").text(),
-            dayNumber: $(element).find(".sub").text(),
-            temp: $(element).find(".high").text(),
-            weather:
-              "https://www.accuweather.com" +
-              $(element).find("img.weather-icon").attr("data-src"),
-            weatherDesc: $(element).find("div.phrase").text(),
-          });
-        });
-
-        return weatherToSend;
-      });
-  }
-
   // ==============================================
   // Routes
   // ==============================================
@@ -81,9 +51,39 @@ module.exports = (app) => {
   app.get("/", (req, res) => res.render("intro", { user: req.session }));
 
   app.get("/weather", async (req, res) => {
-    const weatherToSend = await fetchHTML();
-
     var cookieUser = req.session.user ? true : false;
+
+    const weatherToSend = {
+      data: [
+        {
+          dayName: "Mondary",
+          dayNumber: "09/17",
+          temp: "99",
+          weather: "/images/weathericons/1.svg",
+          weatherDesc: "Too Hot",
+
+          complaints: [],
+        },
+        {
+          dayName: "Tuesdary",
+          dayNumber: "09/18",
+          temp: "102",
+          weather: "/images/weathericons/1.svg",
+          weatherDesc: "Still Too Hot",
+
+          complaints: [],
+        },
+        {
+          dayName: "Wedary",
+          dayNumber: "09/19",
+          temp: "90",
+          weather: "/images/weathericons/1.svg",
+          weatherDesc: "What'd I say?",
+
+          complaints: [],
+        },
+      ],
+    };
 
     res.render("index", {
       weather: weatherToSend.data,

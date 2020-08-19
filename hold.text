@@ -1,0 +1,27 @@
+axios
+      .get(
+        "https://weather.com/weather/tenday/l/a4bf563aa6c1d3b3daffff43f51e3d7f765f43968cddc0475b9f340601b8cc26#detailIndex5"
+      )
+      .then((resp) => {
+        let $ = cheerio.load(response.data);
+
+        console.log(req.session);
+
+        var weatherToSend = {
+          data: [],
+        };
+
+        $(".daily-wrapper").each((i, element) => {
+          weatherToSend.data.push({
+            dayName: $(element).find(".dow").text(),
+            dayNumber: $(element).find(".sub").text(),
+            temp: $(element).find(".high").text(),
+            weather:
+              "https://www.accuweather.com" +
+              $(element).find("img.weather-icon").attr("data-src"),
+            weatherDesc: $(element).find("div.phrase").text(),
+          });
+        });
+
+        return weatherToSend;
+      });
