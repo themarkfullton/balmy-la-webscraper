@@ -23,6 +23,36 @@ mongooseConnection.once("open", function () {
 });
 
 module.exports = (app) => {
+  async function fetchHTML(url) {
+    await axios
+      .get(
+        "https://www.accuweather.com/en/us/los-angeles/90012/daily-weather-forecast/347625"
+      )
+      .then((resp) => {
+        let $ = cheerio.load(response.data);
+
+        console.log(req.session);
+
+        var weatherToSend = {
+          data: [],
+        };
+
+        $(".daily-wrapper").each((i, element) => {
+          weatherToSend.data.push({
+            dayName: $(element).find(".dow").text(),
+            dayNumber: $(element).find(".sub").text(),
+            temp: $(element).find(".high").text(),
+            weather:
+              "https://www.accuweather.com" +
+              $(element).find("img.weather-icon").attr("data-src"),
+            weatherDesc: $(element).find("div.phrase").text(),
+          });
+        });
+
+        return weatherToSend;
+      });
+  }
+
   // ==============================================
   // Routes
   // ==============================================
@@ -48,41 +78,17 @@ module.exports = (app) => {
     })
   );
 
-  app.get("/", (req, res) => res.render("intro", { user: req.session.user }));
+  app.get("/", (req, res) => res.render("intro", { user: req.session }));
 
-  app.get("/weather", (req, res) => {
-    axios
-      .get(
-        "https://www.accuweather.com/en/us/los-angeles/90012/daily-weather-forecast/347625"
-      )
-      .then((response) => {
-        let $ = cheerio.load(response.data);
+  app.get("/weather", async (req, res) => {
+    const weatherToSend = await fetchHTML();
 
-        console.log(req.session);
+    var cookieUser = req.session.user ? true : false;
 
-        var weatherToSend = {
-          data: [],
-        };
-
-        $(".daily-wrapper").each((i, element) => {
-          weatherToSend.data.push({
-            dayName: $(element).find(".dow").text(),
-            dayNumber: $(element).find(".sub").text(),
-            temp: $(element).find(".high").text(),
-            weather:
-              "https://www.accuweather.com" +
-              $(element).find("img.weather-icon").attr("data-src"),
-            weatherDesc: $(element).find("div.phrase").text(),
-          });
-        });
-
-        var cookieUser = req.session.user ? true : false;
-
-        res.render("index", {
-          weather: weatherToSend.data,
-          user: cookieUser,
-        });
-      });
+    res.render("index", {
+      weather: weatherToSend.data,
+      user: cookieUser,
+    });
   });
 
   app.get("/login", (req, res) => {
