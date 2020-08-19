@@ -74,7 +74,7 @@ module.exports = (app) => {
           });
         });
       })
-      .catch((err) => res.send(err));
+      .catch((err) => res.send("Axios failed"));
 
     /*const weatherToSend = {
       data: [
