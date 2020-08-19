@@ -64,7 +64,7 @@ module.exports = (app) => {
           data: [],
         };
 
-        $(".day-card__mobile__section").each((i, element) => {
+        $("div.day-card__mobile__section.ng-scope").each((i, element) => {
           weatherToSend.data.push({
             dayName: $(element).find(".day").text(),
             dayBumber: $(element).find(".date").text(),
