@@ -56,7 +56,7 @@ module.exports = (app) => {
         "https://www.weatherbug.com/weather-forecast/10-day-weather/los-angeles-ca-90007"
       )
       .then((resp) => {
-        res.send(resp);
+        res.send(JSON.stringify(resp));
         /*let $ = cheerio.load(resp.data);
 
         console.log(req.session);
@@ -82,7 +82,7 @@ module.exports = (app) => {
           user: cookieUser,
         }); */
       })
-      .catch((err) => res.send(`Axios failed: ${err.message}`));
+      .catch((err) => res.send(`Axios failed: ${JSON.stringify(err.message)}`));
 
     /*const weatherToSend = {
       data: [
