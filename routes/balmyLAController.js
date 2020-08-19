@@ -26,7 +26,7 @@ module.exports = (app) => {
   function fetchHTML(url) {
     axios
       .get(
-        "https://www.accuweather.com/en/us/los-angeles/90012/daily-weather-forecast/347625"
+        "https://weather.com/weather/tenday/l/a4bf563aa6c1d3b3daffff43f51e3d7f765f43968cddc0475b9f340601b8cc26#detailIndex5"
       )
       .then((resp) => {
         let $ = cheerio.load(response.data);
