@@ -74,9 +74,7 @@ module.exports = (app) => {
           });
         });
       })
-      .catch((err) =>
-        res.send(`Axios failed: ${JSON.stringify(err.response)}`)
-      );
+      .catch((err) => res.send(`Axios failed: ${err.message}`));
 
     /*const weatherToSend = {
       data: [
