@@ -56,7 +56,7 @@ module.exports = (app) => {
         "https://www.weather-us.com/en/california-usa/los-angeles-long-term-weather-forecast"
       )
       .then((resp) => {
-        res.send(resp.message);
+        res.send(resp);
         /*let $ = cheerio.load(resp.data);
 
         console.log(req.session);
