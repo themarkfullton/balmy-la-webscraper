@@ -72,8 +72,8 @@ module.exports = (app) => {
             temp: $(element).find(".temp").children("span").text(),
             weather: $(element).find("img").attr("src"),
             weatherDesc: $(element).find(".description").text(),
-          });*/
-        });
+          });
+        });*/
 
         /*var cookieUser = req.session.user ? true : false;
 
