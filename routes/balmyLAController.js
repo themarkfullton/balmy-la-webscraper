@@ -53,10 +53,11 @@ module.exports = (app) => {
   app.get("/weather", async (req, res) => {
     await axios
       .get(
-        "https://www.weatherbug.com/weather-forecast/10-day-weather/los-angeles-ca-90007"
+        "https://weather.com/en-GB/weather/tenday/l/Los+Angeles+CA+United+States?canonicalCityId=84c64154109916077c8d3c2352410aaae5f6eeff682000e3a7470e38976128c2"
       )
       .then((resp) => {
-        let $ = cheerio.load(resp.data);
+        res.send(resp);
+        /*let $ = cheerio.load(resp.data);
 
         console.log(req.session);
 
@@ -71,15 +72,15 @@ module.exports = (app) => {
             temp: $(element).find(".temp").children("span").text(),
             weather: $(element).find("img").attr("src"),
             weatherDesc: $(element).find(".description").text(),
-          });
+          });*/
         });
 
-        var cookieUser = req.session.user ? true : false;
+        /*var cookieUser = req.session.user ? true : false;
 
         res.render("index", {
           weather: weatherToSend.data,
           user: cookieUser,
-        });
+        });*/
       })
       .catch((err) => res.send(`Axios failed: ${err.message}`));
 
