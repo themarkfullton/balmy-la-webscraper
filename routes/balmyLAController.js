@@ -53,10 +53,10 @@ module.exports = (app) => {
   app.get("/weather", async (req, res) => {
     await axios
       .get(
-        "https://weather.com/en-GB/weather/tenday/l/Los+Angeles+CA+United+States?canonicalCityId=84c64154109916077c8d3c2352410aaae5f6eeff682000e3a7470e38976128c2"
+        "https://weather.com/en-GB/weather/tenday/l/Los+Angeles+CA+United+States"
       )
       .then((resp) => {
-        res.send(resp);
+        res.send(resp.message);
         /*let $ = cheerio.load(resp.data);
 
         console.log(req.session);
