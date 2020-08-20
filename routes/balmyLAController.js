@@ -64,7 +64,7 @@ module.exports = (app) => {
           data: [],
         };
 
-        $(".day-card__mobile").each((i, element) => {
+        $("div.day-card__mobile").each((i, element) => {
           weatherToSend.data.push({
             dayName: $(element).find(".day").text(),
             dayBumber: $(element).find(".date").text(),
