@@ -64,7 +64,7 @@ module.exports = (app) => {
           data: [],
         };
 
-        $(".day-card__desktop").each((i, element) => {
+        $(".info").each((i, element) => {
           weatherToSend.data.push({
             dayName: $(element).find(".dow").text(),
             dayNumber: $(element).find(".date").text(),
