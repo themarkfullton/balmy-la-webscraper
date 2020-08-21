@@ -38,11 +38,6 @@
   font-style: italic;
 }
 
-.weatherWrapper .weatherIntro p .introText {
-  font-style: none;
-  margin-bottom: 1.5em;
-}
-
 .weatherWrapper .weatherIntro p a {
   opacity: 1;
   font-weight: bold;
@@ -54,6 +49,11 @@
 
 .weatherWrapper .weatherIntro p a:hover {
   color: white;
+}
+
+.weatherWrapper .weatherIntro .introText {
+  font-style: normal;
+  margin-bottom: 1.5em;
 }
 
 .weatherWrapper .weatherContainer {
