@@ -70,7 +70,7 @@ module.exports = (app) => {
             dayNumber: $(element).find(".date").text(),
             temp: $(element)
               .find(".day-card__mobile__section__temp")
-              .children("span")
+              .children(".ng-scope")
               .text(),
             weather: $(element).find("img").attr("src"),
             weatherDesc: $(element).find(".description").text(),
