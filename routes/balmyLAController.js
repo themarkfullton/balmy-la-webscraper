@@ -60,7 +60,7 @@ module.exports = (app) => {
 
         console.log(req.session);
 
-        var weathertoSend = {
+        var weatherToSend = {
           data: [],
         };
 
