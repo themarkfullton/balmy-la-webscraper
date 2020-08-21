@@ -175,10 +175,9 @@ module.exports = (app) => {
   app.post("/complain", redirectLogin, (req, res) => {
     var complaintToExplain = [
       {
-        dayName: req.body.dayName,
-        dayNumber: req.body.dayNumber,
+        day: req.body.day,
         temp: req.body.temp,
-        weatherImg: req.body.weather,
+        weather: req.body.weather,
         weatherDesc: req.body.weatherDesc,
       },
     ];
@@ -192,22 +191,16 @@ module.exports = (app) => {
   });
 
   app.post("/add-complaint", redirectLogin, async (req, res) => {
-    await db.Weather.findOne(
-      { dayNumber: req.body.dayNumber },
-      "dayNumber",
-      (err, resp) => {
-        if (err) return handleError(err);
-      }
-    ).then(async (resp) => {
+    await db.Weather.findOne({ day: req.body.day }, "day", (err, resp) => {
+      if (err) return handleError(err);
+    }).then(async (resp) => {
       if (resp === null) {
         await db.Weather.create({
-          dayName: req.body.dayName,
-
-          dayNumber: req.body.dayNumber,
+          day: req.body.day,
 
           temp: req.body.temp,
 
-          weather: req.body.weatherImg,
+          weather: req.body.weather,
 
           weatherDesc: req.body.weatherDesc,
         }).then(async (resp) => {

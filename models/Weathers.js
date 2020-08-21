@@ -4,12 +4,7 @@ let Schema = mongoose.Schema;
 
 let weatherSchema = new Schema(
   {
-    dayName: {
-      type: String,
-      required: true,
-    },
-
-    dayNumber: {
+    day: {
       type: String,
       required: true,
     },
