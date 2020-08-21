@@ -68,7 +68,7 @@ module.exports = (app) => {
           weatherToSend.data.push({
             dayName: $(element).find(".day").text(),
             dayNumber: $(element).find(".date").text(),
-            temp: $(element).find(".temp").children(".ng-scope").text(),
+            temp: $(element).find(".temp").find("span").text(),
             weather: $(element).find("img").attr("src"),
             weatherDesc: $(element).find(".description").text(),
           });
