@@ -4,7 +4,6 @@
         <p>Pulled from <a href="https://www.accuweather.com/">Accuweather</a></p>
     </div>
     {{#each weather}}
-    {{if temp}}
     <div class="weatherContainer">
         <form action="/complain" method="post">
             <input type="hidden" name="weather" value="https://weather-and-climate.com{{this.weather}}">
@@ -26,6 +25,5 @@
             </div>
         </form>
     </div>
-    {{/if}}
     {{/each}}
 </div>
