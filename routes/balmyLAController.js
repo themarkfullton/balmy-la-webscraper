@@ -66,8 +66,7 @@ module.exports = (app) => {
 
         $(".forecast").each((i, element) => {
           weatherToSend.data.push({
-            dayName: $(element).find(".date").text(),
-            dayNumber: $(element).find(".date").find(".strong").text(),
+            day: $(element).find(".date").text(),
             temp: $(element).find(".temperature").text(),
             weather: $(element).find("img").attr("src"),
             weatherDesc: $(element).find(".text").find("p").text(),

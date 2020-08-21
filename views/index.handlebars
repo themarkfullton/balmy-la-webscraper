@@ -4,18 +4,18 @@
         <p>Pulled from <a href="https://www.accuweather.com/">Accuweather</a></p>
     </div>
     {{#each weather}}
+    {{if weather.temp}}
     <div class="weatherContainer">
         <form action="/complain" method="post">
             <input type="hidden" name="weather" value="https://weather-and-climate.com{{this.weather}}">
-            <input type="hidden" name="dayName" value="{{this.dayName}}">
-            <input type="hidden" name="dayNumber" value="{{this.dayNumber}}">
+            <input type="hidden" name="dayName" value="{{this.day}}">
             <input type="hidden" name="temp" value="{{this.temp}}">
             <input type="hidden" name="weatherDesc" value="{{this.weatherDesc}}">
             <div class="weatherImageDiv">
                 <img class="weatherImage" src="https://weather-and-climate.com{{this.weather}}">
             </div>
             <div class="weatherTitle">
-                <p>{{this.dayName}} | {{this.dayNumber}}</p>
+                <p>{{this.day}}</p>
             </div>
             <div class="weatherDescription">
                 <p>{{this.temp}}</p>
@@ -26,5 +26,6 @@
             </div>
         </form>
     </div>
+    {{/if}}
     {{/each}}
 </div>
