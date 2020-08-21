@@ -190,7 +190,7 @@ module.exports = (app) => {
     });
   });
 
-  app.post("/add-complaint", redirectLogin, async (req, res) => {
+  app.post("/add-complaint", async (req, res) => {
     await db.Weather.findOne({ day: req.body.day }, "day", (err, resp) => {
       if (err) return handleError(err);
     }).then(async (resp) => {
