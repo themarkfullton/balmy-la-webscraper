@@ -64,11 +64,11 @@ module.exports = (app) => {
           data: [],
         };
 
-        $(".day-card__desktop").each((i, element) => {
+        $(".day-card__section").each((i, element) => {
           weatherToSend.data.push({
             dayName: $(element).find(".day").text(),
             dayNumber: $(element).find(".date").text(),
-            temp: $(element).find(".ng-binding").text(),
+            temp: $(element).find(".temp").text(),
             weather: $(element).find("img").attr("src"),
             weatherDesc: $(element).find(".description").text(),
           });
