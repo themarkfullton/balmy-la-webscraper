@@ -68,7 +68,7 @@ module.exports = (app) => {
           weatherToSend.data.push({
             dayName: $(element).find(".day").text(),
             dayNumber: $(element).find(".date").text(),
-            temp: $(element).find(".temp").children("span").text(),
+            temp: $(element).find(".temp").text(),
             weather: $(element).find("img").attr("src"),
             weatherDesc: $(element).find(".description").text(),
           });
@@ -81,38 +81,6 @@ module.exports = (app) => {
         });
       })
       .catch((err) => res.send(`Axios failed: ${err}`));
-
-    /*const weatherToSend = {
-      data: [
-        {
-          dayName: "Mondary",
-          dayNumber: "09/17",
-          temp: "99",
-          weather: "images/weathericons/1.svg",
-          weatherDesc: "Too Hot",
-
-          complaints: [],
-        },
-        {
-          dayName: "Tuesdary",
-          dayNumber: "09/18",
-          temp: "102",
-          weather: "images/weathericons/1.svg",
-          weatherDesc: "Still Too Hot",
-
-          complaints: [],
-        },
-        {
-          dayName: "Wedary",
-          dayNumber: "09/19",
-          temp: "90",
-          weather: "images/weathericons/1.svg",
-          weatherDesc: "What'd I say?",
-
-          complaints: [],
-        },
-      ],
-    };*/
   });
 
   app.get("/login", (req, res) => {

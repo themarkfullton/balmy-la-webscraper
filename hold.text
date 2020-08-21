@@ -25,3 +25,37 @@ axios
 
         return weatherToSend;
       });
+
+      //////////////////////////////////////////////////////////////////
+
+      /*const weatherToSend = {
+      data: [
+        {
+          dayName: "Mondary",
+          dayNumber: "09/17",
+          temp: "99",
+          weather: "images/weathericons/1.svg",
+          weatherDesc: "Too Hot",
+
+          complaints: [],
+        },
+        {
+          dayName: "Tuesdary",
+          dayNumber: "09/18",
+          temp: "102",
+          weather: "images/weathericons/1.svg",
+          weatherDesc: "Still Too Hot",
+
+          complaints: [],
+        },
+        {
+          dayName: "Wedary",
+          dayNumber: "09/19",
+          temp: "90",
+          weather: "images/weathericons/1.svg",
+          weatherDesc: "What'd I say?",
+
+          complaints: [],
+        },
+      ],
+    };*/
