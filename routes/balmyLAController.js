@@ -53,7 +53,7 @@ module.exports = (app) => {
   app.get("/weather", async (req, res) => {
     axios
       .get(
-        "https://www.weatherbug.com/weather-forecast/10-day-weather/los-angeles-ca-90007"
+        "https://weather-and-climate.com/10-ten-day-forecast-fahrenheit,Los-Angeles,United-States-of-America"
       )
       .then((resp) => {
         let $ = cheerio.load(resp.data);
@@ -64,13 +64,13 @@ module.exports = (app) => {
           data: [],
         };
 
-        $(".day-card__desktop").each((i, element) => {
+        $(".forecast").each((i, element) => {
           weatherToSend.data.push({
-            dayName: $(element).find(".day").text(),
-            dayNumber: $(element).find(".date").text(),
-            temp: $(element).find(".temp").text(),
+            dayName: $(element).find(".date").text(),
+            dayNumber: $(element).find(".date").find(".strong").text(),
+            temp: $(element).find(".temperature").text(),
             weather: $(element).find("img").attr("src"),
-            weatherDesc: $(element).find(".description").text(),
+            weatherDesc: $(element).find(".text").text(),
           });
         });
         var cookieUser = req.session.user ? true : false;
