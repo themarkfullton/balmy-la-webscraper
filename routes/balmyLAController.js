@@ -53,7 +53,7 @@ module.exports = (app) => {
   app.get("/weather", async (req, res) => {
     axios
       .get(
-        "https://weather-and-climate.com/10-ten-day-forecast-fahrenheit,Los-Angeles,United-States-of-America"
+        "https://www.weatherbug.com/weather-forecast/10-day-weather/los-angeles-ca-90007"
       )
       .then((resp) => {
         res.send(resp);
