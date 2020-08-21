@@ -70,7 +70,7 @@ module.exports = (app) => {
             dayNumber: $(element).find(".date").find(".strong").text(),
             temp: $(element).find(".temperature").text(),
             weather: $(element).find("img").attr("src"),
-            weatherDesc: $(element).find(".text").text(),
+            weatherDesc: $(element).find(".text").find("p").text(),
           });
         });
         var cookieUser = req.session.user ? true : false;
