@@ -67,7 +67,7 @@ module.exports = (app) => {
         $(".day-card__desktop").each((i, element) => {
           weatherToSend.data.push({
             dayName: $(element).find(".day").text(),
-            dayBumber: $(element).find(".date").text(),
+            dayNumber: $(element).find(".date").text(),
             temp: $(element).find(".temp").children("span.ng-binding").text(),
             weather: $(element).find("img").attr("src"),
             weatherDesc: $(element).find(".description").text(),
