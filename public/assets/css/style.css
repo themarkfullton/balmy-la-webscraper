@@ -38,6 +38,11 @@
   font-style: italic;
 }
 
+.weatherWrapper .weatherIntro p .introText {
+  font-style: none;
+  margin-bottom: 1.5em;
+}
+
 .weatherWrapper .weatherIntro p a {
   opacity: 1;
   font-weight: bold;

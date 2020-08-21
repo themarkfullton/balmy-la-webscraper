@@ -29,7 +29,7 @@ module.exports = (app) => {
 
   const redirectLogin = (req, res, next) => {
     if (!req.session.user) {
-      res.redirect("/");
+      res.redirect("/login");
     } else {
       next();
     }
