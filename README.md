@@ -1,34 +1,24 @@
 # Balmy LA Webscraper
 
-**Link to Live:** https://balmy-la-webscraper.herokuapp.com/
+**Link Deactivated (Web students no longer learn webscraping w/ Cheerio)**
 
 **Example Username:** MrGrump
+
 **Example Password:** 84ndaD3
+
 
 This webpage scrapes information about LA's weather from Weather-And-Climate just so you can complain about it like a true Los Angelino!
 
-In order to add a complaint, you'll need to log into a user. Add your own or use the example provided. We don't collect personal information (e-mail, address, etc).
 
-## Motivation
+Created to show students:
 
-Qurantine summer in LA: All of LA's terrible weather and no one to complain about it with! Hence this project.
+(1) How to webscrape with Cheerio
+(2) How to set up super basic authentication
+(3) How to use Handlebars
 
-## Build Status
+Students no longer learn Cheerio in class, however, and are taught alternative forms of authentication, so I've deactivated the link to live.
 
-Minimum Viable Product.
-
-## Database used
-
-- Heroku's MLab (MongoDbB/Mongoose)
-
-## Languages/Technologies/Frameworks Used
-
-- HTML
-- Sass
-- Javascript (Vanilla)
-- Handlebars
-- Mongo/Mongoose
-- Express-Node-Session
+All the same, it comes in handy for showing MVC set up with Handlebars.
 
 ## Screenshots
 
